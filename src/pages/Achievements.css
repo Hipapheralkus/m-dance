@@ -1,0 +1,294 @@
+.achievements-page {
+  padding-top: 80px;
+}
+
+.page-header {
+  background-color: #64bfe8;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+  margin-bottom: 60px;
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.achievements-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.achievements-content h2 {
+  font-size: 2.2rem;
+  color: #333;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+.achievements-content h2:after {
+  content: '';
+  display: block;
+  width: 50%;
+  height: 3px;
+  background-color: #64bfe8;
+  margin-top: 10px;
+}
+
+.achievement-text {
+  margin-bottom: 50px;
+  line-height: 1.8;
+}
+
+.achievement-text p {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.achievement-intro {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.achievement-subheading {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin: 30px 0 20px;
+}
+
+.achievement-year {
+  margin-bottom: 30px;
+}
+
+.achievement-year h3 {
+  font-size: 1.8rem;
+  color: #64bfe8;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.achievement-year ul {
+  list-style-type: none;
+  padding-left: 5px;
+}
+
+.achievement-year ul li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.achievement-year ul li:before {
+  content: "•";
+  color: #64bfe8;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
+.achievements-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.achievement-image {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  aspect-ratio: 4 / 3;
+}
+
+.achievement-image:hover {
+  transform: translateY(-5px);
+}
+
+.achievement-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.achievement-image:hover img {
+  transform: scale(1.05);
+}
+
+/* Lightbox styles */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 90%;
+}
+
+.lightbox-image-container {
+  height: 80vh;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.lightbox-image-container img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.image-counter {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  padding: 5px;
+}
+
+.close-button {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  font-size: 30px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1010;
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 1010;
+}
+
+.nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.nav-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .achievements-page {
+    padding-top: 60px;
+  }
+
+  .page-header {
+    padding: 40px 20px;
+    margin-bottom: 40px;
+  }
+
+  .page-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .achievements-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .achievement-text p {
+    font-size: 1rem;
+  }
+  
+  .achievement-intro {
+    font-size: 1.1rem;
+  }
+  
+  .achievement-subheading {
+    font-size: 1.2rem;
+  }
+  
+  .achievement-year h3 {
+    font-size: 1.5rem;
+  }
+
+  .achievements-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+  }
+  
+  .nav-button {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .achievements-gallery {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .nav-button {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+}

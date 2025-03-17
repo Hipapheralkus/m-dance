@@ -1,0 +1,19 @@
+.contact-card p a {
+  color: #444;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.contact-card p a:hover {
+  color: #64bfe8;
+}
+
+.email-image-container {
+  margin-top: 10px;
+}
+
+.email-image {
+  max-width: 100%;
+  height: auto;
+}

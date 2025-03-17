@@ -1,0 +1,92 @@
+.about-section {
+  padding: 80px 0;
+  background-color: #f9f9f9;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #333;
+  position: relative;
+}
+
+.section-title:after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #64bfe8;
+  margin: 15px auto 0;
+}
+
+.about-content {
+  line-height: 1.8;
+  color: #444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-content p {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Pull out slideshow from text flow with a nice floating effect */
+.about-content .certification-slideshow {
+  float: right;
+  margin: 0 0 20px 30px;
+  width: 40%;
+  max-width: 450px;
+}
+
+/* Clear the float after slideshow to prevent layout issues */
+.about-content p:nth-of-type(2) {
+  clear: right;
+}
+
+@media screen and (max-width: 768px) {
+  .about-section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .about-content p {
+    font-size: 1rem;
+  }
+  
+  .about-content .certification-slideshow {
+    float: none;
+    margin: 30px auto;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .about-content p:nth-of-type(2) {
+    clear: none;
+  }
+  
+}.about-content a {
+  color: #64bfe8;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.about-content a:hover {
+  color: #42a6d6;
+  text-decoration: underline;
+}

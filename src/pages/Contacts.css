@@ -1,0 +1,202 @@
+.contacts-page {
+  padding-top: 80px;
+}
+
+.page-header {
+  background-color: #64bfe8;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+  margin-bottom: 60px;
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.contacts-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.contact-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.contact-method-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.contact-method-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-method-card h2 {
+  color: #333;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #64bfe8;
+  display: inline-block;
+}
+
+.contact-method-card p a {
+  color: #444;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.contact-method-card p a:hover {
+  color: #64bfe8;
+}
+
+/* Updated email image styles for Contacts page */
+.contact-method-card .email-image-container {
+  padding: 10px 0;
+  text-align: left;
+}
+
+.contact-method-card .email-image {
+  width: 50%;
+  height: auto;
+  display: inline-block;
+  margin: 0;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  color: #444;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #64bfe8;
+}
+
+.social-links a i {
+  margin-right: 15px;
+  font-size: 24px;
+}
+
+.locations-section {
+  margin-top: 40px;
+}
+
+.locations-section h2 {
+  font-size: 2.2rem;
+  color: #333;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+.locations-section h2:after {
+  content: '';
+  display: block;
+  width: 50%;
+  height: 3px;
+  background-color: #64bfe8;
+  margin-top: 10px;
+}
+
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 40px;
+}
+
+.location-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.location-info {
+  padding: 30px;
+}
+
+.location-info h3 {
+  font-size: 1.6rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.location-info p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.location-map {
+  width: 100%;
+  height: 300px;
+  border-top: 1px solid #eee;
+}
+
+.location-map iframe {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .contacts-page {
+    padding-top: 60px;
+  }
+
+  .page-header {
+    padding: 40px 20px;
+    margin-bottom: 40px;
+  }
+
+  .page-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .locations-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .locations-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .location-info h3 {
+    font-size: 1.4rem;
+  }
+  
+  .location-info p {
+    font-size: 1rem;
+  }
+  
+  .social-links a, .contact-method-card p a {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .contact-methods {
+    grid-template-columns: 1fr;
+  }
+}

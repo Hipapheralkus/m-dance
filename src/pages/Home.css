@@ -1,0 +1,11 @@
+.home {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add any home-specific styles here */
