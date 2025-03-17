@@ -91,7 +91,14 @@ const Achievements = () => {
             <p className="achievement-subheading">
               Níže uvádíme výběr úspěchů našich tanečníků:
             </p>
-            
+
+            <div className="achievement-year">
+              <h3>Rok 2025</h3>
+              <ul>
+                <li><strong>Nominace na World Dance Cup 2025 v Burgos, Španělsku:</strong> Naše dvě tanečnice se nominovali z 1. místa.</li>
+              </ul>
+            </div>   
+
             <div className="achievement-year">
               <h3>Rok 2024</h3>
               <ul>
