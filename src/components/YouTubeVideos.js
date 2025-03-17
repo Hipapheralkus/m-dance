@@ -20,7 +20,7 @@ const YouTubeVideos = () => {
           {videos.map((videoId, index) => (
             <div className="video-wrapper" key={index}>
               <iframe 
-                src={`https://www.youtube.com/embed/${videoId}`}
+                src={`https://www.youtube.com/embed/${videoId}?origin=${window.location.origin}`}
                 title={`M-Dance video ${index + 1}`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
