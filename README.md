@@ -29,16 +29,15 @@ The project follows a component-based architecture:
 
 ## Setup Instructions
 
-1. Clone the repository
-2. Install dependencies:
+1. Install dependencies:
    ```
    npm install
    ```
-3. Start the development server:
+2. Start the development server:
    ```
    npm run dev
    ```
-4. Build for production:
+3. Build for production:
    ```
    npm run build
    ```
