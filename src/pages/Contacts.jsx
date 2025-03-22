@@ -6,14 +6,14 @@ const Contacts = () => {
     {
       id: 1,
       name: 'Gymnázium Jana Keplera',
-      address: 'Parléřova 118, Praha 6 – Hradčany',
-      mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2559.9407934877554!2d14.385383776546097!3d50.08799997152541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b951a98d7374f%3A0x132be1877dc3d082!2sGymn%C3%A1zium%20Jana%20Keplera!5e0!3m2!1scs!2scz!4v1708707423184!5m2!1scs!2scz'
+      address: 'Hládkov 224/1, Praha 6-Hradčany',
+      mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d524.9888389398874!2d14.38738500201975!3d50.08864371089875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b951a70be468d%3A0xd43cf0dfef320f73!2sHl%C3%A1dkov%20224%2F1%2C%20169%2000%20Praha%206-Hrad%C4%8Dany!5e0!3m2!1sen!2scz!4v1742679092633!5m2!1sen!2scz'
     },
     {
       id: 2,
       name: 'DanceZone',
       address: 'U Chodovského hřbitova 2120/3, Praha 11-Chodov',
-      mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2562.225493283406!2d14.496815776544392!3d50.03317237941807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b925d78b1a3e9%3A0x5d616b7b967de236!2sDanceZone!5e0!3m2!1scs!2scz!4v1708707500563!5m2!1scs!2scz'
+      mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1724.9016432846022!2d14.511797399744063!3d50.02646779848646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b93aa5c5f100d%3A0x9f3c46d782bbcef3!2sDanceZone!5e0!3m2!1sen!2scz!4v1742678739881!5m2!1sen!2scz'
     }
   ];
 
