@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // Fixed import from 'react-router' to 'react-router-dom'
 import logoWhite from '../assets/logo-white.png';
 import './Footer.css';
 
@@ -9,6 +9,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
+        {/* Footer content temporarily commented out
         <div className="footer-content">
           <div className="footer-logo">
             <Link to="/">
@@ -72,6 +73,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        */}
         
         <div className="footer-bottom">
           <p>&copy; {currentYear} M-Dance. Všechna práva vyhrazena.</p>

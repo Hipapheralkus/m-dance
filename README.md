@@ -13,8 +13,9 @@ This is the official website for M-Dance, a dance school based in Prague special
 
 ## Technologies Used
 
-- React.js
-- React Router for navigation
+- [React](https://reactjs.org/)
+- [React Router](https://reactrouter.com/) for navigation
+- [Vite](https://vitejs.dev/) for bundling and development server
 - CSS for styling (no CSS frameworks used)
 - Font Awesome for icons
 
@@ -35,7 +36,7 @@ The project follows a component-based architecture:
    ```
 3. Start the development server:
    ```
-   npm start
+   npm run dev
    ```
 4. Build for production:
    ```
@@ -45,7 +46,7 @@ The project follows a component-based architecture:
 ## Content Management
 
 - Replace placeholder images in the `public/images/` directory with actual content
-- Update YouTube video IDs in the `YouTubeVideos.js` component
+- Update YouTube video IDs in the `YouTubeVideos.jsx` component
 - Modify text content in the respective components as needed
 
 ## Deployment

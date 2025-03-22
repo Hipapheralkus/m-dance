@@ -45,10 +45,10 @@ Copy all the provided files to their respective locations according to the file 
 
 ### 6. YouTube Video Integration
 
-Update the `YouTubeVideos.js` component with your actual YouTube video IDs:
+Update the `YouTubeVideos.jsx` component with your actual YouTube video IDs:
 
 ```javascript
-// In src/components/YouTubeVideos.js
+// In src/components/YouTubeVideos.jsx
 const videos = [
   'YOUR_ACTUAL_VIDEO_ID_1',
   'YOUR_ACTUAL_VIDEO_ID_2',

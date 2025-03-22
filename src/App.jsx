@@ -1,16 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import Achievements from './pages/Achievements';
-import Trainers from './pages/Trainers';
-import Contacts from './pages/Contacts';
+import Navbar from './components/Navbar.jsx';
+import Footer from './components/Footer.jsx';
+import Home from './pages/Home.jsx';
+import Achievements from './pages/Achievements.jsx';
+import Trainers from './pages/Trainers.jsx';
+import Contacts from './pages/Contacts.jsx';
+import ScrollToTop from './components/ScrollToTop.jsx';
 import './App.css';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop /> {/* Added ScrollToTop component here */}
       <div className="app">
         <Navbar />
         <div className="content">
