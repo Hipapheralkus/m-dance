@@ -1,6 +1,6 @@
 # M-Dance Website
 
-This is the official website for M-Dance, a dance school based in Prague specializing in contemporary dance, jazz, and acrobatic arts for children and youth aged 4-16 years.
+This is the official website for M-Dance, a dance school based in Prague specializing in contemporary dance, jazz, and acrobatic arts for children and youth aged 4-18 years.
 
 ## Features
 
@@ -42,16 +42,6 @@ The project follows a component-based architecture:
    ```
    npm run build
    ```
-
-## Content Management
-
-- Replace placeholder images in the `public/images/` directory with actual content
-- Update YouTube video IDs in the `YouTubeVideos.jsx` component
-- Modify text content in the respective components as needed
-
-## Deployment
-
-After building the project with `npm run build`, deploy the contents of the `build` directory to your web hosting provider.
 
 ## License
 
