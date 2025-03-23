@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@vercel/speed-insights": "latest",
+    "@vercel/analytics": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-router": "latest",
