@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import logo from '../assets/logo.png';
 import eosLogo from '../assets/eos.png';
 import './Navbar.css';
+import { ENABLED_FEATURES } from '../config';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,16 +31,20 @@ const Navbar = () => {
               Domů
             </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/uspechy" className="nav-link" onClick={() => setIsOpen(false)}>
-              Soutěžní úspěchy
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/treneri" className="nav-link" onClick={() => setIsOpen(false)}>
-              Naši trenéři
-            </Link>
-          </li>
+          {ENABLED_FEATURES.ACHIEVEMENTS && (
+            <li className="nav-item">
+              <Link to="/uspechy" className="nav-link" onClick={() => setIsOpen(false)}>
+                Soutěžní úspěchy
+              </Link>
+            </li>
+          )}
+          {ENABLED_FEATURES.TRAINERS && (
+            <li className="nav-item">
+              <Link to="/treneri" className="nav-link" onClick={() => setIsOpen(false)}>
+                Naši trenéři
+              </Link>
+            </li>
+          )}
           <li className="nav-item">
             <Link to="/kontakty" className="nav-link" onClick={() => setIsOpen(false)}>
               Kontakty

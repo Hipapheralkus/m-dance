@@ -7,6 +7,7 @@ import Achievements from './pages/Achievements.jsx';
 import Trainers from './pages/Trainers.jsx';
 import Contacts from './pages/Contacts.jsx';
 import ScrollToTop from './components/ScrollToTop.jsx';
+import { ENABLED_FEATURES } from './config';
 import './App.css';
 
 function App() {
@@ -18,9 +19,9 @@ function App() {
         <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/uspechy" element={<Achievements />} />
-            <Route path="/treneri" element={<Trainers />} />
-            <Route path="/kontakty" element={<Contacts />} />
+            {ENABLED_FEATURES.ACHIEVEMENTS && <Route path="/uspechy" element={<Achievements />} />}
+  {ENABLED_FEATURES.TRAINERS && <Route path="/treneri" element={<Trainers />} />}
+  {ENABLED_FEATURES.CONTACTS && <Route path="/kontakty" element={<Contacts />} />}
           </Routes>
         </div>
         <Footer />
