@@ -17,7 +17,18 @@ const galleryImages = [
   '/images/gallery/image12.webp',
   '/images/gallery/image13.webp',
   '/images/gallery/image14.webp',
-  '/images/gallery/image15.webp'
+  '/images/gallery/image15.webp',
+  '/images/gallery/image16.webp',
+  '/images/gallery/image17.webp',
+  '/images/gallery/image18.webp',
+  '/images/gallery/image19.webp',
+  '/images/gallery/image20.webp',
+  '/images/gallery/image21.webp',
+  '/images/gallery/image22.webp',
+  '/images/gallery/image23.webp',
+  '/images/gallery/image24.webp',
+  '/images/gallery/image25.webp',
+  '/images/gallery/image26.webp'
 ];
 
 const Gallery = ({ title }) => {
