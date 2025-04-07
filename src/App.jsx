@@ -20,8 +20,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             {ENABLED_FEATURES.ACHIEVEMENTS && <Route path="/uspechy" element={<Achievements />} />}
-  {ENABLED_FEATURES.TRAINERS && <Route path="/treneri" element={<Trainers />} />}
-  {ENABLED_FEATURES.CONTACTS && <Route path="/kontakty" element={<Contacts />} />}
+            {ENABLED_FEATURES.TRAINERS && <Route path="/treneri" element={<Trainers />} />}
+            {ENABLED_FEATURES.CONTACTS && <Route path="/kontakty" element={<Contacts />} />}
           </Routes>
         </div>
         <Footer />
