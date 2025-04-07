@@ -23,18 +23,19 @@ Marcela vlastní studio M-Dance, první taneční studio v České republice cer
 Marcela je certifikovaná učitelka úrovně M2, mentorka a <a href="https://www.acrobaticarts.com/acrodance-competition-adjudicators" target="_blank" rel="noopener noreferrer">porotkyně</a>.
 Jako trenérka a choreografka ráda pracuje s tanečníky, kteří mají otevřenou mysl a jsou ochotni sdílet svou vášeň pro tanec bez ohledu na věk či úroveň pokročilosti. V roli porotkyně oceňuje autenticitu a hravost a vždy chce, aby se tanečníci cítili viděni, a poskytuje jim příležitost užít si soutěžní zkušenost naplno.`,
       certifications: [
-        { path: '/images/certifications/marcela_cert_1.webp', alt: 'Certifikace 1' },
-        { path: '/images/certifications/marcela_cert_2.webp', alt: 'Certifikace 2' },
-        { path: '/images/certifications/marcela_cert_3.webp', alt: 'Certifikace 3' },
-        { path: '/images/certifications/marcela_cert_4.webp', alt: 'Certifikace 4' },
-        { path: '/images/certifications/marcela_cert_5.png', alt: 'Certifikace 5' },
-        { path: '/images/certifications/marcela_cert_6.webp', alt: 'Certifikace 6' },
-        { path: '/images/certifications/marcela_cert_7.webp', alt: 'Certifikace 7' }
+        { path: '/images/certifications/marcela_cert_1.webp', alt: 'Acrobatic Arts Certified Teacher Module 1' },
+        { path: '/images/certifications/marcela_cert_2.webp', alt: 'Acrobatic Arts Certified Teacher Aerial & Back Handspring' },
+        { path: '/images/certifications/marcela_cert_3.webp', alt: 'Acrobatic Arts Certified Teacher Module 2' },
+        { path: '/images/certifications/marcela_cert_4.webp', alt: 'Acrobatic Arts Teacher Workshop Mentor Workshop' },
+        { path: '/images/certifications/marcela_cert_5.png', alt: 'Acrobatic Arts Teacher Workshop Aerial Progressions' },
+        { path: '/images/certifications/marcela_cert_6.webp', alt: 'Acrobatic Arts Teacher Workshop Flexibility & Contortion' },
+        { path: '/images/certifications/marcela_cert_7.webp', alt: 'Acrobatic Arts Certified Adjudicator' }
       ],
       scans: [
-        { path: '/images/certifications/marcela_scan_1.webp', alt: 'Certifikát 1' },
-        { path: '/images/certifications/marcela_scan_2.webp', alt: 'Certifikát 2' },
-        { path: '/images/certifications/marcela_scan_3.webp', alt: 'Certifikát 3' }
+        { path: '/images/certifications/marcela_scan_1.webp', alt: 'Certification in Progressing Ballet Technique' },
+        { path: '/images/certifications/marcela_scan_2.webp', alt: 'Certificate Alixa Flexibility Module One' },
+        { path: '/images/certifications/marcela_scan_3.webp', alt: 'Osvěčení Tréner Tanečních Sportů III. Třídy' },
+        { path: '/images/certifications/marcela_scan_4.webp', alt: 'Osvěčení Tréner Tanečních Sportů II. Třídy' }
       ]
     },
     {
@@ -44,7 +45,7 @@ Jako trenérka a choreografka ráda pracuje s tanečníky, kteří mají otevře
       photo: '/images/trainers/anna.webp',
       certifications: [],
       scans: [
-        { path: '/images/certifications/anna_scan.webp', alt: 'Certifikát' }
+        { path: '/images/certifications/anna_scan.webp', alt: 'Osvěčení Tréner Tanečních Sportů III. Třídy' }
       ]
     },
     {
@@ -53,13 +54,15 @@ Jako trenérka a choreografka ráda pracuje s tanečníky, kteří mají otevře
       title: 'Certifikovaný trenér AcrobaticArts',
       photo: '/images/trainers/andrej.webp',
       certifications: [
-        { path: '/images/certifications/andrej_cert_1.webp', alt: 'Certifikace 1' },
-        { path: '/images/certifications/andrej_cert_2.webp', alt: 'Certifikace 2' },
-        { path: '/images/certifications/andrej_cert_3.webp', alt: 'Certifikace 3' },
-        { path: '/images/certifications/andrej_cert_4.png', alt: 'Certifikace 4' },
-        { path: '/images/certifications/andrej_cert_5.webp', alt: 'Certifikace 5' }
+        { path: '/images/certifications/andrej_cert_1.webp', alt: 'Acrobatic Arts Certified Teacher Module 1' },
+        { path: '/images/certifications/andrej_cert_2.webp', alt: 'Acrobatic Arts Certified Teacher Aerial & Back Handspring' },
+        { path: '/images/certifications/andrej_cert_3.webp', alt: 'Acrobatic Arts Certified Teacher Module 2' },
+        { path: '/images/certifications/andrej_cert_4.png', alt: 'Acrobatic Arts Teacher Workshop Aerial Progressions' },
+        { path: '/images/certifications/andrej_cert_5.webp', alt: 'Acrobatic Arts Teacher Workshop Flexibility & Contortion' }
       ],
-      scans: []
+      scans: [
+        { path: '/images/certifications/andrej_scan_1.webp', alt: 'Osvěčení o rekvalifikaci Zdravotník zotavovacích akcí' }
+      ]
     },
     {
       id: 4,
@@ -67,9 +70,11 @@ Jako trenérka a choreografka ráda pracuje s tanečníky, kteří mají otevře
       title: 'Certifikovaná trenérka AcrobaticArts',
       photo: '/images/trainers/andrea.webp',
       certifications: [
-        { path: '/images/certifications/andrea_cert_1.webp', alt: 'Certifikace 1' }
+        { path: '/images/certifications/andrea_cert_1.webp', alt: 'Acrobatic Arts Certified Teacher Module 1' }
       ],
-      scans: []
+      scans: [
+        { path: '/images/certifications/andrea_scan_1.webp', alt: 'Osvěčení o rekvalifikaci Zdravotník zotavovacích akcí' }
+      ]
     }
   ];
 
