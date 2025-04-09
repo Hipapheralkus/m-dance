@@ -1,6 +1,6 @@
 // src/config.js
 export const ENABLED_FEATURES = {
-  ACHIEVEMENTS: true,
-  TRAINERS: true,
+  ACHIEVEMENTS: false,
+  TRAINERS: false,
   CONTACTS: true
 };
