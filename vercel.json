@@ -1,10 +1,4 @@
 {
-  "routes": [
-    { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
-    { "src": "/robots.txt", "dest": "/robots.txt" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/" }
-  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -14,7 +8,7 @@
           "value": "public, max-age=3600, stale-while-revalidate=86400"
         },
         {
-          "key": "X-Content-Type-Options",
+          "key": "X-Content-Type-Options", 
           "value": "nosniff"
         },
         {
@@ -36,5 +30,8 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
