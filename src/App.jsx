@@ -7,6 +7,8 @@ import Achievements from './pages/Achievements.jsx';
 import Trainers from './pages/Trainers.jsx';
 import Contacts from './pages/Contacts.jsx';
 import ScrollToTop from './components/ScrollToTop.jsx';
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import { ENABLED_FEATURES } from './config';
 import './App.css';
 
