@@ -1,35 +1,89 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './YouTubeVideos.css';
 
 const YouTubeVideos = () => {
-  // Actual YouTube video IDs from the provided URLs
+  const [activeVideo, setActiveVideo] = useState(null);
+
+  // YouTube video data
   const videos = [
-    'OfcgeA-DZoI', // https://www.youtube.com/watch?v=OfcgeA-DZoI
-    'NthoQyz8U6w', // https://www.youtube.com/watch?v=NthoQyz8U6w
-    'zthpdkp7yHQ', // https://www.youtube.com/watch?v=zthpdkp7yHQ
-    'UD7MORWTdhA', // https://www.youtube.com/watch?v=UD7MORWTdhA
-    'wN2ob97o3mA', // https://youtu.be/wN2ob97o3mA,
-	'aznxXNYlYGs' //https://youtu.be/aznxXNYlYGs
+    {
+      id: 'OfcgeA-DZoI',
+      title: 'MČR Czech Dance Masters'
+    },
+    {
+      id: 'NthoQyz8U6w',
+      title: 'MČR Czech Dance Masters'
+    },
+    {
+      id: 'zthpdkp7yHQ',
+      title: 'MČR Czech Dance Masters'
+    },
+    {
+      id: 'UD7MORWTdhA',
+      title: 'Czech Dance Masters'
+    },
+    {
+      id: 'wN2ob97o3mA',
+      title: 'Dance World Cup'
+    },
+    {
+      id: 'aznxXNYlYGs',
+      title: 'Vánoce za dveřmi M-Dance'
+    }
   ];
+
+  const handleVideoClick = (videoId) => {
+    setActiveVideo(videoId);
+  };
+
+  const closeVideo = () => {
+    setActiveVideo(null);
+  };
 
   return (
     <section className="videos-section" id="videos">
       <div className="videos-container">
         <h2 className="section-title">Videa</h2>
         <div className="videos-grid">
-          {videos.map((videoId, index) => (
-            <div className="video-wrapper" key={index}>
-              <iframe 
-                src={`https://www.youtube.com/embed/${videoId}?origin=${window.location.origin}`}
-                title={`M-Dance video ${index + 1}`}
+          {videos.map((video, index) => (
+            <div 
+              className="video-thumbnail" 
+              key={index}
+              onClick={() => handleVideoClick(video.id)}
+            >
+              <img 
+                src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} 
+                alt={`${video.title} thumbnail`} 
+                onError={(e) => {
+                  // Fallback to medium quality if maxresdefault doesn't exist
+                  e.target.src = `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`;
+                }}
+              />
+              <div className="play-button">
+                <i className="fas fa-play"></i>
+              </div>
+              <div className="video-title">{video.title}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {activeVideo && (
+        <div className="video-modal" onClick={closeVideo}>
+          <div className="video-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-modal" onClick={closeVideo}>&times;</button>
+            <div className="video-iframe-container">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${activeVideo}?autoplay=1&origin=${window.location.origin}`}
+                title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };
