@@ -55,11 +55,32 @@
     height: 60vh;
   }
 
+  .banner-video {
+    /* Modify these properties to show more of the horizontal content */
+    width: 140%; /* Increase width to show more horizontal content */
+    height: auto;
+    min-width: 0; /* Remove min-width constraint */
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center; /* Center the video */
+  }
+
   .banner-title {
     font-size: 2.5rem;
   }
 
   .banner-subtitle {
     font-size: 1.2rem;
+  }
+}
+
+/* For very small devices */
+@media screen and (max-width: 480px) {
+  .banner-video {
+    width: 220%; /* Show even more horizontal content on very small screens */
+  }
+  
+  .banner-video-container {
+    height: 50vh; /* Reduce height on very small screens */
   }
 }
