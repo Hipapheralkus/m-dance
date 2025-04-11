@@ -52,7 +52,7 @@
 
 @media screen and (max-width: 768px) {
   .banner-video-container {
-    height: 60vh;
+    height: 40vh;
   }
 
   .banner-video {
@@ -77,10 +77,10 @@
 /* For very small devices */
 @media screen and (max-width: 480px) {
   .banner-video {
-    width: 220%; /* Show even more horizontal content on very small screens */
+    width: 300%; /* Show even more horizontal content on very small screens */
   }
   
   .banner-video-container {
-    height: 50vh; /* Reduce height on very small screens */
+    height: 30vh; /* Reduce height on very small screens */
   }
 }
