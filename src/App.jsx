@@ -15,7 +15,7 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <ScrollToTop /> {/* Added ScrollToTop component here */}
+      <ScrollToTop />
       <div className="app">
         <Navbar />
         <div className="content">
@@ -27,6 +27,8 @@ function App() {
           </Routes>
         </div>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </div>
     </Router>
   );
