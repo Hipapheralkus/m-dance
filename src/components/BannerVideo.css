@@ -57,7 +57,7 @@
 
   .banner-video {
     /* Modify these properties to show more of the horizontal content */
-    width: 140%; /* Increase width to show more horizontal content */
+    width: 100%; /* Increase width to show more horizontal content */
     height: auto;
     min-width: 0; /* Remove min-width constraint */
     min-height: 100%;
@@ -77,7 +77,7 @@
 /* For very small devices */
 @media screen and (max-width: 480px) {
   .banner-video {
-    width: 300%; /* Show even more horizontal content on very small screens */
+    width: 100%; /* Show even more horizontal content on very small screens */
   }
   
   .banner-video-container {
