@@ -97,6 +97,7 @@ const Achievements = () => {
               <ul>
                 <li><strong>Nominace na World Dance Cup 2025 v Burgos, Španělsku:</strong> Naše dvě tanečnice se nominovali z 1. místa.</li>
                 <li><strong>Mistrovství Prahy Czech Dance Tour 2025:</strong> Získali jsme 2 zlaté a 1 stříbrnou medaili.</li>
+                <li><strong>Mistrovství Čech Czech Dance Tour 2025:</strong> Získali jsme 1 zlatú, 1 stříbrnou a 1 finále - všichni postoupili na Mistrovství ČR.</li>
               </ul>
             </div>   
 
