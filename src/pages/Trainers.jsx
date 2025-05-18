@@ -51,7 +51,7 @@ Jako trenérka a choreografka ráda pracuje s tanečníky, kteří mají otevře
     {
       id: 3,
       name: 'Andrej Šimko',
-      title: 'Certifikovaný trenér AcrobaticArts',
+      title: 'Certifikovaný trenér AcrobaticArts a Českého Svazu Tanečního Sportu',
       photo: '/images/trainers/andrej.webp',
       certifications: [
         { path: '/images/certifications/andrej_cert_1.webp', alt: 'Acrobatic Arts Certified Teacher Module 1' },

@@ -39,10 +39,10 @@ const Contacts = () => {
           <div className="contact-method-card">
             <h2>Sociální sítě</h2>
             <div className="social-links">
-              <a href="https://instagram.com/mdance" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/m_dance_prague/" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-instagram"></i> Instagram
               </a>
-              <a href="https://facebook.com/mdance" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.facebook.com/mdancejj" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-facebook"></i> Facebook
               </a>
               <a href="https://www.youtube.com/@marcelasmrhova8962" target="_blank" rel="noopener noreferrer">
