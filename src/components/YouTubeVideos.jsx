@@ -8,27 +8,27 @@ const YouTubeVideos = () => {
   const videos = [
     {
       id: 'OfcgeA-DZoI',
-      title: 'MČR Czech Dance Masters'
+      title: 'MČR Czech Dance Tour 2022 - Sound of Silence'
     },
     {
       id: 'NthoQyz8U6w',
-      title: 'MČR Czech Dance Masters'
+      title: 'MČR Czech Dance Tour 2022 - Almost There'
     },
     {
       id: 'zthpdkp7yHQ',
-      title: 'MČR Czech Dance Masters'
+      title: 'MČR Czech Dance Tour 2022 - V dešti'
     },
     {
       id: 'UD7MORWTdhA',
-      title: 'Czech Dance Masters'
+      title: 'MČR Czech Dance Tour 2022 - Jako Mulan'
     },
     {
       id: 'wN2ob97o3mA',
-      title: 'Dance World Cup'
+      title: 'Dance World Cup Jihlava 2025 - You Can Be Anything'
     },
     {
       id: 'aznxXNYlYGs',
-      title: 'Vánoce za dveřmi M-Dance'
+      title: 'M-Dance vánoční video 2024'
     }
   ];
 
