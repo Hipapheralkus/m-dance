@@ -151,52 +151,50 @@ V roce 2025 mu byla udělena trenérská a porotcovská licence trenéra III. t�
         <div className="trainers-grid">
           {trainers.map((trainer) => (
             <div className="trainer-card" key={trainer.id}>
-              <div className="trainer-photo" onClick={() => openLightbox([{path: trainer.photo, alt: trainer.name}], 0, trainer.name)}>
-                <img src={trainer.photo} alt={trainer.name} />
+              <div className="trainer-header">
+                <div className="trainer-photo" onClick={() => openLightbox([{path: trainer.photo, alt: trainer.name}], 0, trainer.name)}>
+                  <img src={trainer.photo} alt={trainer.name} />
+                </div>
+                <div className="trainer-info">
+                  <h2>{trainer.name}</h2>
+                  <p className="trainer-title">{trainer.title}</p>
+                  {trainer.bio && (
+                    <div className="trainer-bio" dangerouslySetInnerHTML={{ __html: trainer.bio.replace(/\n/g, '<br>') }}></div>
+                  )}
+                </div>
               </div>
-              
-              <div className="trainer-info">
-                <h2>{trainer.name}</h2>
-                <p className="trainer-title">{trainer.title}</p>
-                
-                {trainer.bio && (
-                  <div className="trainer-bio" dangerouslySetInnerHTML={{ __html: trainer.bio.replace(/\n/g, '<br>') }}></div>
-                )}
-                
-                {trainer.certifications.length > 0 && (
-                  <div className="trainer-certifications">
-                    <h3>Certifikace</h3>
-                    <div className="cert-grid">
-                      {trainer.certifications.map((cert, index) => (
-                        <div 
-                          className="cert-thumbnail" 
-                          key={index}
-                          onClick={() => openLightbox(trainer.certifications, index, trainer.name)}
-                        >
-                          <img src={cert.path} alt={`${trainer.name} ${cert.alt}`} />
-                        </div>
-                      ))}
-                    </div>
+              {trainer.certifications.length > 0 && (
+                <div className="trainer-certifications">
+                  <h3>Acrobatic Arts Badges</h3>
+                  <div className="cert-grid">
+                    {trainer.certifications.map((cert, index) => (
+                      <div 
+                        className="cert-thumbnail" 
+                        key={index}
+                        onClick={() => openLightbox(trainer.certifications, index, trainer.name)}
+                      >
+                        <img src={cert.path} alt={`${trainer.name} ${cert.alt}`} />
+                      </div>
+                    ))}
                   </div>
-                )}
-                
-                {trainer.scans.length > 0 && (
-                  <div className="trainer-certification-scan">
-                    <h3>Certifikát</h3>
-                    <div className="cert-scans">
-                      {trainer.scans.map((scan, index) => (
-                        <div 
-                          className="cert-scan" 
-                          key={index} 
-                          onClick={() => openLightbox(trainer.scans, index, trainer.name)}
-                        >
-                          <img src={scan.path} alt={`${trainer.name} ${scan.alt}`} />
-                        </div>
-                      ))}
-                    </div>
+                </div>
+              )}
+              {trainer.scans.length > 0 && (
+                <div className="trainer-certification-scan">
+                  <h3>Certifikáty</h3>
+                  <div className="cert-scans">
+                    {trainer.scans.map((scan, index) => (
+                      <div 
+                        className="cert-scan" 
+                        key={index} 
+                        onClick={() => openLightbox(trainer.scans, index, trainer.name)}
+                      >
+                        <img src={scan.path} alt={`${trainer.name} ${scan.alt}`} />
+                      </div>
+                    ))}
                   </div>
-                )}
-              </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
