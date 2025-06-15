@@ -100,6 +100,7 @@ const Achievements = () => {
                 <li><strong>Mistrovství Čech Czech Dance Tour 2025:</strong> Získali jsme 1 zlatú, 1 bronzovou a 1 finále - všichni postoupili na Mistrovství ČR.</li>
                 <li><strong>O cenu starostky města Česká Lípa - 12. ročník:</strong> Získali jsme 2 zlaté, 2 stříbrné, 1 bronzovou a 1 finální umístnění.</li>
                 <li><strong>MČR Czech Dance Tour 2025:</strong> Získali jsme 1 stříbrnou, 1 bronzovou a 1 finále - 2 choreografie postoupili na mistrovství světa do Budapešti.</li>
+                <li><strong>Open Dance Mission Mladá Boleslav - 9. ročník</strong> Získali jsme 3 zlaté, 3 stříbrné, 2 bronzové a 1 finále.</li>
               </ul>
             </div>   
 
