@@ -28,7 +28,12 @@ const galleryImages = [
   '/images/gallery/image23.webp',
   '/images/gallery/image24.webp',
   '/images/gallery/image25.webp',
-  '/images/gallery/image26.webp'
+  '/images/gallery/image26.webp',
+  '/images/gallery/image27.webp',
+  '/images/gallery/image28.webp',
+  '/images/gallery/image29.webp',
+  '/images/gallery/image30.webp',
+  '/images/gallery/image31.webp'
 ];
 
 const Gallery = ({ title }) => {

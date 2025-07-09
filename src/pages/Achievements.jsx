@@ -95,6 +95,8 @@ const Achievements = () => {
             <div className="achievement-year">
               <h3>Rok 2025</h3>
               <ul>
+                <li><strong>World Dance Cup 2025 v Burgos, Španělsku:</strong> Dvě naše tanečnice úspěšně reprezentovali ČR.</li>
+                <li><strong>WDA  World Championship 2025 v Budapešti:</strong> Dvě semifinále a 8 finálových umístnění</li>
                 <li><strong>Nominace na World Dance Cup 2025 v Burgos, Španělsku:</strong> Naše dvě tanečnice se nominovali z 1. místa.</li>
                 <li><strong>Mistrovství Prahy Czech Dance Tour 2025:</strong> Získali jsme 2 zlaté a 1 stříbrnou medaili.</li>
                 <li><strong>Mistrovství Čech Czech Dance Tour 2025:</strong> Získali jsme 1 zlatú, 1 bronzovou a 1 finále - všichni postoupili na Mistrovství ČR.</li>
@@ -108,7 +110,8 @@ const Achievements = () => {
               <h3>Rok 2024</h3>
               <ul>
                 <li><strong>Mistrovství ČR Czech Dance League 2024:</strong> 27 sól a duetů, získali jsme 4 zlaté, 4 stříbrné a 4 bronzové medaile.</li>
-                <li><strong>WDA World Championship 2024:</strong> Naši tanečníci vybojovali 1 zlatou medaili.</li>
+                  {/* TODO more WDA;  */}
+                <li><strong>WDA World Championship 2024:</strong> Naši tanečníci vybojovali 1 zlatou medaili.</li> 
                 <li><strong>Open Dance Mission Mladá Boleslav 2024:</strong> Přivezli jsme 2 zlaté medaile.</li>
                 <li><strong>MČR Czech Dance Tour 2024:</strong> Získali jsme 1 stříbrnou medaili a měli jsme 3 další tanečníky ve finále.</li>
                 <li><strong>Mistrovství Čech Czech Dance Tour 2024:</strong> Získali jsme 1 zlatou, 1 stříbrnou a 1 bronzovou medaili.</li>
