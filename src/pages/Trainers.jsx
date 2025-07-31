@@ -17,7 +17,7 @@ const Trainers = () => {
       title: 'Trenérka a choreografka',
       photo: '/images/trainers/marcela.webp',
       bio: `Marcela začínala jako moderní gymnastka a později objevila svou vášeň pro tanec. Svět tanečních soutěží poznala z různých úhlů – jako tanečnice se zúčastnila více než 200 soutěží a mnoha dalších jako trenérka a choreografka. Její choreografie v contemporary, lyrical jazzu a jazzu získaly řadu ocenění, včetně několika medailí z mistrovství světa WDA a WADF.
-Marcela je tanečnice společenského tance ve třídě S a finalistka evropského šampionátu WDC-AL v kategoriích standard a latina nad 30 let – Blackpool 2022.
+Marcela je tanečnice společenského tance ve třídě M a finalistka evropského šampionátu WDC-AL v kategoriích standard a latina nad 30 let – Blackpool 2022. Je držitelkou <a href="https://www.csts.cz/cs/Evidence/SeznamTreneru" target="_blank" rel="noopener noreferrer">trénerské licence</a> III. třídy Českého Svazu Tanečního Sportu.
 Má také velmi ráda lindy hop a authentic jazz, které tančila v několika filmech.
 Marcela vlastní studio M-Dance, první taneční studio v České republice certifikované programem AcrobaticArts. Do tohoto programu se zamilovala v roce 2020, protože ji nadchlo, jak dokáže propojit akrobatické prvky s krásou tanečního umění a nabídnout tanečníkům jasně strukturovaný systém vzdělávání. Proto se rozhodla přinést tento program do České republiky.
 Marcela je certifikovaná učitelka úrovně M2, mentorka a <a href="https://www.acrobaticarts.com/acrodance-competition-adjudicators" target="_blank" rel="noopener noreferrer">porotkyně</a>.
@@ -34,8 +34,9 @@ Jako trenérka a choreografka ráda pracuje s tanečníky, kteří mají otevře
       scans: [
         { path: '/images/certifications/marcela_scan_1.webp', alt: 'Certification in Progressing Ballet Technique' },
         { path: '/images/certifications/marcela_scan_2.webp', alt: 'Certificate Alixa Flexibility Module One' },
-        { path: '/images/certifications/marcela_scan_3.webp', alt: 'Osvěčení Tréner Tanečních Sportů III. Třídy' },
-        { path: '/images/certifications/marcela_scan_4.webp', alt: 'Osvěčení Tréner Tanečních Sportů II. Třídy' }
+        { path: '/images/certifications/marcela_scan_3.webp', alt: 'Osvědčení Tréner Tanečních Sportů III. Třídy' },
+        { path: '/images/certifications/marcela_scan_4.webp', alt: 'Osvědčení Tréner Tanečních Sportů II. Třídy' },
+        { path: '/images/certifications/marcela_scan_5.webp', alt: 'Osvědčení Tréner a Porotce III. Třídy ČSTS' }
       ]
     },
     {
@@ -57,7 +58,7 @@ Jako trenérka a choreografka ráda pracuje s tanečníky, kteří mají otevře
 Mezi jeho nejvýznamnější úspěchy patří titul vicemistra světa ve standardních tancích WDC-AL Over 30 Ballroom v holandském Assenu (2021) a účast ve finálových kolech standardu a latiny na evropském šampionátu v Blackpoolu (2022). Na mistrovství světa WDC-AL v hlavní kategorii v Assenu 2021 byl prvním nepostupujícím párem do čtvrtfinále během galavečera. K dalším pozoruhodným výkonům patří finále Mistrovství ČR družstev v Brně (2018) a čtvrtfinále otevřeného mistrovství ve valčíku ve Vídni (2018), kde porazili 94 párů.
 Dvakrát, v letech 2015 a 2018, organizoval mezinárodní soutěž ETDS (European Tournament for Dancing Students), kde soutěžilo více než 300 účastníků z celého světa.
 Od roku 2022 se věnuje výuce akrobacie a v rámci mezinárodního programu Acrobatic Arts získal certifikát Module One (2023) a následně Module Two v anglickém Leedsu (2024). V rámci M-Dance se Andrej věnuje nejen výuce akrobacie, ale i technickým aspektům spojeným s činností klubu.
-V roce 2025 mu byla udělena trenérská a porotcovská licence trenéra III. třídy u Českého svazu tanečního sportu. Jeho trenérská dráha je navíc ozdobena dosažením hlavní třídy A ve standardních tancích se svým párem.`,
+V roce 2025 mu byla udělena trenérská a porotcovská licence <a href="https://www.csts.cz/cs/Evidence/SeznamTreneru" target="_blank" rel="noopener noreferrer">trenéra</a> III. třídy u Českého svazu tanečního sportu. Jeho trenérská dráha je navíc ozdobena dosažením hlavní třídy A ve standardních tancích se svým párem.`,
       certifications: [
         { path: '/images/certifications/andrej_cert_1.webp', alt: 'Acrobatic Arts Certified Teacher Module 1' },
         { path: '/images/certifications/andrej_cert_2.webp', alt: 'Acrobatic Arts Certified Teacher Aerial & Back Handspring' },
@@ -66,7 +67,8 @@ V roce 2025 mu byla udělena trenérská a porotcovská licence trenéra III. t�
         { path: '/images/certifications/andrej_cert_5.webp', alt: 'Acrobatic Arts Teacher Workshop Flexibility & Contortion' }
       ],
       scans: [
-        { path: '/images/certifications/andrej_scan_1.webp', alt: 'Osvěčení o rekvalifikaci Zdravotník zotavovacích akcí' }
+        { path: '/images/certifications/andrej_scan_1.webp', alt: 'Osvědčení o rekvalifikaci Zdravotník zotavovacích akcí' },
+        { path: '/images/certifications/andrej_scan_2.webp', alt: 'Osvědčení Tréner a Porotce III. Třídy ČSTS' }
       ]
     },
     {
@@ -78,7 +80,7 @@ V roce 2025 mu byla udělena trenérská a porotcovská licence trenéra III. t�
         { path: '/images/certifications/andrea_cert_1.webp', alt: 'Acrobatic Arts Certified Teacher Module 1' }
       ],
       scans: [
-        { path: '/images/certifications/andrea_scan_1.webp', alt: 'Osvěčení o rekvalifikaci Zdravotník zotavovacích akcí' }
+        { path: '/images/certifications/andrea_scan_1.webp', alt: 'Osvědčení o rekvalifikaci Zdravotník zotavovacích akcí' },
       ]
     }
   ];
