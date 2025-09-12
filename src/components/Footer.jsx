@@ -76,7 +76,13 @@ const Footer = () => {
         */}
         
         <div className="footer-bottom">
-          <p>&copy; {currentYear} M-Dance. Všechna práva vyhrazena.</p>
+          <p>
+            &copy; {currentYear} M-Dance. Všechna práva vyhrazena.
+            {' '}|{' '}
+            <a href="/docs/vseobecne-obchodni-podminky.pdf" target="_blank" rel="noopener noreferrer">
+              Všeobecné obchodní podmínky
+            </a>
+          </p>
         </div>
       </div>
     </footer>

@@ -29,6 +29,26 @@ const YouTubeVideos = () => {
     {
       id: 'aznxXNYlYGs',
       title: 'M-Dance vánoční video 2024'
+    },
+    {
+      id: 'Fi4WXr73z_4',
+      title: 'Czech Dance Tour Praha 2025'
+    },
+    {
+      id: 'JSCJoDfv7K4',
+      title: 'Czech Dance Tour 2024 - The playful master'
+    },
+    {
+      id: 'SBGeqxLg4ec',
+      title: 'MČR Czech Dance Tour 2024 - Heaven'
+    },
+    {
+      id: 'qnioJNua2qM',
+      title: 'Czech Dance Tour 2020 - Dopis'
+    },
+    {
+      id: 'wNDDtKCiSZ8',
+      title: 'Vystoupení M-Dance dětí na 1. plese Pražského filmového orchestru - Večerníčky'
     }
   ];
 

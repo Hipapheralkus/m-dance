@@ -31,6 +31,11 @@ const Navbar = () => {
               Domů
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to="/o-nas" className="nav-link" onClick={() => setIsOpen(false)}>
+              O nás
+            </Link>
+          </li>
           {ENABLED_FEATURES.ACHIEVEMENTS && (
             <li className="nav-item">
               <Link to="/uspechy" className="nav-link" onClick={() => setIsOpen(false)}>

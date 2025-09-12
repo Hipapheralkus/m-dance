@@ -81,6 +81,20 @@
   color: #aaa;
 }
 
+/* Make footer legal link clearly visible and on-brand */
+.footer-bottom a {
+  color: #64bfe8;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+}
+
+.footer-bottom a:hover,
+.footer-bottom a:focus-visible {
+  color: #8fd3f1;
+  text-decoration-thickness: 2px;
+}
+
 @media screen and (max-width: 768px) {
   .footer {
     padding: 40px 0 0;

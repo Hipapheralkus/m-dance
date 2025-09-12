@@ -1,128 +1,125 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './Gallery.css';
 
-// Updated images with webp extension
-const galleryImages = [
-  '/images/gallery/image1.webp',
-  '/images/gallery/image2.webp',
-  '/images/gallery/image3.webp',
-  '/images/gallery/image4.webp',
-  '/images/gallery/image5.webp',
-  '/images/gallery/image6.webp',
-  '/images/gallery/image7.webp',
-  '/images/gallery/image8.webp',
-  '/images/gallery/image9.webp',
-  '/images/gallery/image10.webp',
-  '/images/gallery/image11.webp',
-  '/images/gallery/image12.webp',
-  '/images/gallery/image13.webp',
-  '/images/gallery/image14.webp',
-  '/images/gallery/image15.webp',
-  '/images/gallery/image16.webp',
-  '/images/gallery/image17.webp',
-  '/images/gallery/image18.webp',
-  '/images/gallery/image19.webp',
-  '/images/gallery/image20.webp',
-  '/images/gallery/image21.webp',
-  '/images/gallery/image22.webp',
-  '/images/gallery/image23.webp',
-  '/images/gallery/image24.webp',
-  '/images/gallery/image25.webp',
-  '/images/gallery/image26.webp',
-  '/images/gallery/image27.webp',
-  '/images/gallery/image28.webp',
-  '/images/gallery/image29.webp',
-  '/images/gallery/image30.webp',
-  '/images/gallery/image31.webp'
-];
+const Gallery = ({ images, onImageClick, layout = 'grid' }) => {
+    const scrollContainerRef = useRef(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
 
-const Gallery = ({ title }) => {
-  const [selectedImage, setSelectedImage] = useState(null);
+    // layout can be 'grid' or 'scrollable'
+    const gridClass = layout === 'scrollable' ? 'gallery-grid scrollable' : 'gallery-grid';
+    
+    // Determine if arrows should be shown
+    const showArrows = layout === 'scrollable' && images && images.length > 4;
 
-  const openLightbox = (index) => {
-    setSelectedImage(index);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeLightbox = () => {
-    setSelectedImage(null);
-    document.body.style.overflow = 'auto';
-  };
-
-  const navigateImage = (direction) => {
-    const newIndex = selectedImage + direction;
-    if (newIndex >= 0 && newIndex < galleryImages.length) {
-      setSelectedImage(newIndex);
-    }
-  };
-
-  // Close lightbox with Escape key
-  React.useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        closeLightbox();
-      } else if (e.key === 'ArrowRight' && selectedImage !== null) {
-        navigateImage(1);
-      } else if (e.key === 'ArrowLeft' && selectedImage !== null) {
-        navigateImage(-1);
-      }
+    const scroll = (direction) => {
+        if (scrollContainerRef.current) {
+            const scrollAmount = scrollContainerRef.current.offsetWidth * 0.8;
+            scrollContainerRef.current.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedImage]);
+    // --- Swipe/Drag Logic ---
+    const onMouseDown = (e) => {
+        if (layout !== 'scrollable') return;
+        setIsDragging(true);
+        setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+        setScrollLeft(scrollContainerRef.current.scrollLeft);
+        scrollContainerRef.current.classList.add('active');
+    };
 
-  return (
-    <section className="gallery-section" id="gallery">
-      <div className="gallery-container">
-        <h2 className="section-title">{title || 'Galerie'}</h2>
-        <div className="gallery-grid">
-          {galleryImages.map((image, index) => (
-            <div
-              className="gallery-item"
-              key={index}
-              onClick={() => openLightbox(index)}
+    const onMouseLeave = () => {
+        if (layout !== 'scrollable') return;
+        setIsDragging(false);
+        scrollContainerRef.current.classList.remove('active');
+    };
+
+    const onMouseUp = () => {
+        if (layout !== 'scrollable') return;
+        setIsDragging(false);
+        scrollContainerRef.current.classList.remove('active');
+    };
+
+    const onMouseMove = (e) => {
+        if (!isDragging || layout !== 'scrollable') return;
+        e.preventDefault();
+        const x = e.pageX - scrollContainerRef.current.offsetLeft;
+        const walk = (x - startX) * 2; // The multiplier makes the swipe faster
+        scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+    };
+
+
+    return (
+        <div className="gallery-wrapper">
+             {showArrows && (
+                <button className="scroll-arrow prev" onClick={() => scroll(-1)}>
+                    &#10094;
+                </button>
+            )}
+            <div 
+                className={gridClass} 
+                ref={scrollContainerRef}
+                onMouseDown={onMouseDown}
+                onMouseLeave={onMouseLeave}
+                onMouseUp={onMouseUp}
+                onMouseMove={onMouseMove}
             >
-              <img src={image} alt={`M-Dance soutěžní fotografie ${index + 1}`} />
+                {images.map((image, index) => (
+                    <div
+                        className="gallery-item"
+                        key={index}
+                        onClick={() => !isDragging && onImageClick(index)} // Prevents click during drag
+                    >
+                        <img src={image} alt={`M-Dance fotografie ${index + 1}`} draggable="false" />
+                    </div>
+                ))}
             </div>
-          ))}
+            {showArrows && (
+                 <button className="scroll-arrow next" onClick={() => scroll(1)}>
+                    &#10095;
+                </button>
+            )}
         </div>
+    );
+};
 
-        {selectedImage !== null && (
-          <div className="lightbox" onClick={closeLightbox}>
+export const Lightbox = ({ selectedImage, closeLightbox, navigateImage, images }) => {
+    if (selectedImage === null) return null;
+
+    return (
+        <div className="lightbox" onClick={closeLightbox}>
             <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-              <button className="close-button" onClick={closeLightbox}>
-                &times;
-              </button>
-              <button
-                className="nav-button prev"
-                onClick={() => navigateImage(-1)}
-                disabled={selectedImage === 0}
-              >
-                &#10094;
-              </button>
-              <div className="lightbox-image-container">
-                <img
-                  src={galleryImages[selectedImage]}
-                  alt={`M-Dance soutěžní fotografie ${selectedImage + 1}`}
-                />
-                <div className="image-counter">
-                  {selectedImage + 1} / {galleryImages.length}
+                <button className="close-button" onClick={closeLightbox}>
+                    &times;
+                </button>
+                <button
+                    className="nav-button prev"
+                    onClick={() => navigateImage(-1)}
+                    disabled={selectedImage === 0}
+                >
+                    &#10094;
+                </button>
+                <div className="lightbox-image-container">
+                    <img
+                        src={images[selectedImage]}
+                        alt={`M-Dance fotografie ${selectedImage + 1}`}
+                    />
+                    <div className="image-counter">
+                        {selectedImage + 1} / {images.length}
+                    </div>
                 </div>
-              </div>
-              <button
-                className="nav-button next"
-                onClick={() => navigateImage(1)}
-                disabled={selectedImage === galleryImages.length - 1}
-              >
-                &#10095;
-              </button>
+                <button
+                    className="nav-button next"
+                    onClick={() => navigateImage(1)}
+                    disabled={selectedImage === images.length - 1}
+                >
+                    &#10095;
+                </button>
             </div>
-          </div>
-        )}
-      </div>
-    </section>
-  );
+        </div>
+    );
 };
 
 export default Gallery;
+

@@ -36,7 +36,8 @@ Jako trenérka a choreografka ráda pracuje s tanečníky, kteří mají otevře
         { path: '/images/certifications/marcela_scan_2.webp', alt: 'Certificate Alixa Flexibility Module One' },
         { path: '/images/certifications/marcela_scan_3.webp', alt: 'Osvědčení Tréner Tanečních Sportů III. Třídy' },
         { path: '/images/certifications/marcela_scan_4.webp', alt: 'Osvědčení Tréner Tanečních Sportů II. Třídy' },
-        { path: '/images/certifications/marcela_scan_5.webp', alt: 'Osvědčení Tréner a Porotce III. Třídy ČSTS' }
+        { path: '/images/certifications/marcela_scan_5.webp', alt: 'Osvědčení Tréner a Porotce III. Třídy ČSTS' },
+        { path: '/images/certifications/marcela_scan_6.webp', alt: 'Certification in Progressing Contemporary Technique' }
       ]
     },
     {
