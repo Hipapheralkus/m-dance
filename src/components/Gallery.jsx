@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import { useSwipeable } from 'react-swipeable';
 import './Gallery.css';
 
 // Generate path to a 400px wide miniature version of an image.
@@ -102,7 +103,83 @@ const Gallery = ({ images, onImageClick, layout = 'grid' }) => {
 };
 
 export const Lightbox = ({ selectedImage, closeLightbox, navigateImage, images }) => {
+    const [touchDeltaX, setTouchDeltaX] = useState(0);
+    const [isSwiping, setIsSwiping] = useState(false);
+
+    const handlers = useSwipeable({
+        onSwiped: (eventData) => {
+            if (eventData.dir === 'Left' && selectedImage < images.length - 1) {
+                navigateImage(1);
+            } else if (eventData.dir === 'Right' && selectedImage > 0) {
+                navigateImage(-1);
+            }
+            setTouchDeltaX(0);
+            setIsSwiping(false);
+        },
+        onSwiping: (eventData) => {
+            setTouchDeltaX(eventData.deltaX);
+            setIsSwiping(true);
+        },
+        trackMouse: true,
+        preventDefaultTouchmoveEvent: true,
+        delta: 5,
+    });
+
+    useEffect(() => {
+        if (selectedImage !== null) {
+            if (selectedImage < images.length - 1) {
+                const nextImage = new Image();
+                nextImage.src = images[selectedImage + 1];
+            }
+            if (selectedImage > 0) {
+                const prevImage = new Image();
+                prevImage.src = images[selectedImage - 1];
+            }
+        }
+    }, [selectedImage, images]);
+
+    useEffect(() => {
+        setTouchDeltaX(0);
+    }, [selectedImage]);
+
     if (selectedImage === null) return null;
+
+    const renderImage = (index) => {
+        if (index < 0 || index >= images.length) {
+            return null;
+        }
+
+        let transform = 'translateX(0)';
+        let zIndex = 1;
+        if (index === selectedImage) {
+            transform = `translateX(${touchDeltaX}px)`;
+            zIndex = 3;
+        } else if (index === selectedImage - 1) {
+            transform = `translateX(calc(-100% + ${touchDeltaX}px))`;
+            zIndex = 2;
+        } else if (index === selectedImage + 1) {
+            transform = `translateX(calc(100% + ${touchDeltaX}px))`;
+            zIndex = 2;
+        } else {
+            return null;
+        }
+
+        return (
+            <img
+                key={index}
+                src={images[index]}
+                alt={`M-Dance fotografie ${index + 1}`}
+                draggable="false"
+                onDragStart={(e) => e.preventDefault()}
+                style={{
+                    transform: transform,
+                    transition: isSwiping ? 'none' : 'transform 0.3s ease-out',
+                    zIndex: zIndex,
+                    userSelect: 'none',
+                }}
+            />
+        );
+    };
 
     return (
         <div className="lightbox" onClick={closeLightbox}>
@@ -117,13 +194,16 @@ export const Lightbox = ({ selectedImage, closeLightbox, navigateImage, images }
                 >
                     &#10094;
                 </button>
-                <div className="lightbox-image-container">
-                    <img
-                        src={images[selectedImage]}
-                        alt={`M-Dance fotografie ${selectedImage + 1}`}
-                    />
-                    <div className="image-counter">
-                        {selectedImage + 1} / {images.length}
+                <div {...handlers} style={{width: '100%', height: '100%', display: 'flex', alignItems: 'center'}} onDragStart={(e) => e.preventDefault()}>
+                    <div
+                        className={`lightbox-image-container`}>
+                        {renderImage(selectedImage - 1)}
+                        {renderImage(selectedImage)}
+                        {renderImage(selectedImage + 1)}
+
+                        <div className="image-counter">
+                            {selectedImage + 1} / {images.length}
+                        </div>
                     </div>
                 </div>
                 <button
@@ -139,4 +219,3 @@ export const Lightbox = ({ selectedImage, closeLightbox, navigateImage, images }
 };
 
 export default Gallery;
-
