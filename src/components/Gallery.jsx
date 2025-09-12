@@ -1,6 +1,15 @@
 import React, { useRef, useState } from 'react';
 import './Gallery.css';
 
+// Generate path to a 400px wide miniature version of an image.
+// Thumbnails live next to the original image with a `-min` suffix
+// and `.webp` extension. Example: `image.jpg` -> `image-min.webp`.
+const getThumbnailPath = (image) => {
+    const dotIndex = image.lastIndexOf('.');
+    if (dotIndex === -1) return image;
+    return `${image.slice(0, dotIndex)}-min.webp`;
+};
+
 const Gallery = ({ images, onImageClick, layout = 'grid' }) => {
     const scrollContainerRef = useRef(null);
     const [isDragging, setIsDragging] = useState(false);
@@ -65,15 +74,23 @@ const Gallery = ({ images, onImageClick, layout = 'grid' }) => {
                 onMouseUp={onMouseUp}
                 onMouseMove={onMouseMove}
             >
-                {images.map((image, index) => (
-                    <div
-                        className="gallery-item"
-                        key={index}
-                        onClick={() => !isDragging && onImageClick(index)} // Prevents click during drag
-                    >
-                        <img src={image} alt={`M-Dance fotografie ${index + 1}`} draggable="false" />
-                    </div>
-                ))}
+                {images.map((image, index) => {
+                    const thumbnail = getThumbnailPath(image);
+                    return (
+                        <div
+                            className="gallery-item"
+                            key={index}
+                            onClick={() => !isDragging && onImageClick(index)} // Prevents click during drag
+                        >
+                            <img
+                                src={thumbnail}
+                                alt={`M-Dance fotografie ${index + 1}`}
+                                draggable="false"
+                                loading="lazy"
+                            />
+                        </div>
+                    );
+                })}
             </div>
             {showArrows && (
                  <button className="scroll-arrow next" onClick={() => scroll(1)}>
