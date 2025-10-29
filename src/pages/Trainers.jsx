@@ -65,7 +65,8 @@ V roce 2025 mu byla udělena trenérská a porotcovská licence <a href="https:/
         { path: '/images/certifications/andrej_cert_2.webp', alt: 'Acrobatic Arts Certified Teacher Aerial & Back Handspring' },
         { path: '/images/certifications/andrej_cert_3.webp', alt: 'Acrobatic Arts Certified Teacher Module 2' },
         { path: '/images/certifications/andrej_cert_4.png', alt: 'Acrobatic Arts Teacher Workshop Aerial Progressions' },
-        { path: '/images/certifications/andrej_cert_5.webp', alt: 'Acrobatic Arts Teacher Workshop Flexibility & Contortion' }
+        { path: '/images/certifications/andrej_cert_5.webp', alt: 'Acrobatic Arts Teacher Workshop Flexibility & Contortion' },
+        { path: '/images/certifications/andrej_cert_6.webp', alt: 'Acrobatic Arts Teacher Workshop AcroFLEX Workshop' }
       ],
       scans: [
         { path: '/images/certifications/andrej_scan_1.webp', alt: 'Osvědčení o rekvalifikaci Zdravotník zotavovacích akcí' },
