@@ -79,7 +79,7 @@ const AboutUs = () => {
                         <p>🥇 8x Zlato</p> <p>🥈 5x Stříbro</p> <p>🥉 3x Bronz</p>
                     </div>
                     <div className="tile">
-                        <h3>Mistrovství ČR Czech Dance League (sóla a duety)</h3>
+                        <h3>Mistrovství ČR Czech Dance League (sóla, duety a malé skupiny)</h3>
                         <p>2022-2025</p>
                         <p>🥇 12x Zlato</p> <p>🥈 14x Stříbro</p> <p>🥉 16x Bronz</p>
                     </div>
