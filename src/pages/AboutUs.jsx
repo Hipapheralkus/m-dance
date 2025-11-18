@@ -5,7 +5,7 @@ import Gallery, { Lightbox } from '../components/Gallery';
 
 // Helper function to generate image paths
 const generateImagePaths = (section, count) => {
-    return Array.from({ length: count }, (_, i) => 
+    return Array.from({ length: count }, (_, i) =>
         `/images/o-nas/${section}/${section}-${(i + 1).toString().padStart(2, '0')}.webp`
     );
 };
@@ -47,7 +47,7 @@ const AboutUs = () => {
             setSelectedImage(newIndex);
         }
     };
-    
+
     // Keyboard navigation for lightbox
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -81,7 +81,7 @@ const AboutUs = () => {
                     <div className="tile">
                         <h3>Mistrovství ČR Czech Dance League (sóla a duety)</h3>
                         <p>2022-2025</p>
-                        <p>🥇 10x Zlato</p> <p>🥈 11x Stříbro</p> <p>🥉 11x Bronz</p>
+                        <p>🥇 12x Zlato</p> <p>🥈 14x Stříbro</p> <p>🥉 16x Bronz</p>
                     </div>
                     <div className="tile">
                         <h3>WDA World Championships</h3>
@@ -144,7 +144,7 @@ const AboutUs = () => {
                 <Gallery images={dolaryImages} onImageClick={(index) => openLightbox(dolaryImages, index)} layout="scrollable" />
             </section>
 
-            <Lightbox 
+            <Lightbox
                 selectedImage={selectedImage}
                 closeLightbox={closeLightbox}
                 navigateImage={navigateImage}
