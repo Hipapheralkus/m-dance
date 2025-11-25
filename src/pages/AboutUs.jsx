@@ -16,14 +16,14 @@ const AboutUs = () => {
 
     // --- Image arrays for each section ---
     const snyImages = generateImagePaths('sny', 13);
-    const soutezimeImages = generateImagePaths('soutezime', 30);
+    const soutezimeImages = generateImagePaths('soutezime', 40);
     const vystupujemeImages = generateImagePaths('vystupujeme', 1);
     const tvorimeImages = generateImagePaths('tvorime', 6);
     const experimentujemeImages = generateImagePaths('experimentujeme', 7);
     const pracujemeImages = generateImagePaths('pracujeme', 10);
     const technikaImages = generateImagePaths('technika', 13);
     const prozivameImages = generateImagePaths('prozivame', 12);
-    const komunitaImages = generateImagePaths('komunita', 8);
+    const komunitaImages = generateImagePaths('komunita', 9);
     const vzdelavaniImages = generateImagePaths('vzdelavani', 9);
     const dolaryImages = generateImagePaths('dolary', 2);
 

@@ -6,20 +6,16 @@ import GalleryGrid, { Lightbox } from '../components/Gallery'; // Updated import
 import AktivniMestoBanner from '../components/AktivniMestoBanner.jsx';
 import './Home.css';
 
+// Helper function to generate image paths
+// Matches format: /images/gallery/image1.webp, /images/gallery/image2.webp, etc.
+const generateHomeImages = (count) => {
+    return Array.from({ length: count }, (_, i) => 
+        `/images/gallery/image${i + 1}.webp`
+    );
+};
+
 // Define the images for the main page gallery
-const homeImages = [
-  '/images/gallery/image1.webp', '/images/gallery/image2.webp', '/images/gallery/image3.webp',
-  '/images/gallery/image4.webp', '/images/gallery/image5.webp', '/images/gallery/image6.webp',
-  '/images/gallery/image7.webp', '/images/gallery/image8.webp', '/images/gallery/image9.webp',
-  '/images/gallery/image10.webp', '/images/gallery/image11.webp', '/images/gallery/image12.webp',
-  '/images/gallery/image13.webp', '/images/gallery/image14.webp', '/images/gallery/image15.webp',
-  '/images/gallery/image16.webp', '/images/gallery/image17.webp', '/images/gallery/image18.webp',
-  '/images/gallery/image19.webp', '/images/gallery/image20.webp', '/images/gallery/image21.webp',
-  '/images/gallery/image22.webp', '/images/gallery/image23.webp', '/images/gallery/image24.webp',
-  '/images/gallery/image25.webp', '/images/gallery/image26.webp', '/images/gallery/image27.webp',
-  '/images/gallery/image28.webp', '/images/gallery/image29.webp', '/images/gallery/image30.webp',
-  '/images/gallery/image31.webp'
-];
+const homeImages = generateHomeImages(38);
 
 const Home = () => {
   const [selectedImage, setSelectedImage] = useState(null);
