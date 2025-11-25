@@ -25,7 +25,7 @@ const AboutUs = () => {
     const prozivameImages = generateImagePaths('prozivame', 12);
     const komunitaImages = generateImagePaths('komunita', 9);
     const vzdelavaniImages = generateImagePaths('vzdelavani', 9);
-    const dolaryImages = generateImagePaths('dolary', 2);
+    const dolaryImages = generateImagePaths('dolary', 3);
 
     // --- Lightbox logic ---
     const openLightbox = (images, index) => {
