@@ -19,11 +19,11 @@ const AboutUs = () => {
     const soutezimeImages = generateImagePaths('soutezime', 40);
     const vystupujemeImages = generateImagePaths('vystupujeme', 1);
     const tvorimeImages = generateImagePaths('tvorime', 6);
-    const experimentujemeImages = generateImagePaths('experimentujeme', 7);
+    const experimentujemeImages = generateImagePaths('experimentujeme', 10);
     const pracujemeImages = generateImagePaths('pracujeme', 10);
     const technikaImages = generateImagePaths('technika', 13);
     const prozivameImages = generateImagePaths('prozivame', 12);
-    const komunitaImages = generateImagePaths('komunita', 9);
+    const komunitaImages = generateImagePaths('komunita', 13);
     const vzdelavaniImages = generateImagePaths('vzdelavani', 9);
     const dolaryImages = generateImagePaths('dolary', 3);
 
