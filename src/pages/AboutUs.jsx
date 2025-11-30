@@ -18,7 +18,7 @@ const AboutUs = () => {
     const snyImages = generateImagePaths('sny', 13);
     const soutezimeImages = generateImagePaths('soutezime', 40);
     const vystupujemeImages = generateImagePaths('vystupujeme', 1);
-    const tvorimeImages = generateImagePaths('tvorime', 6);
+    const tvorimeImages = generateImagePaths('tvorime', 14);
     const experimentujemeImages = generateImagePaths('experimentujeme', 10);
     const pracujemeImages = generateImagePaths('pracujeme', 10);
     const technikaImages = generateImagePaths('technika', 13);
