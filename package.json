@@ -9,7 +9,7 @@
     "react-dom": "latest",
     "react-router": "latest",
     "react-router-dom": "latest",
-    "react-swipeable": "^7.0.2"
+    "react-swipeable": "latest"
   },
   "scripts": {
     "dev": "vite",
