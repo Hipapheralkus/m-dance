@@ -56,13 +56,12 @@
   }
 
   .banner-video {
-    /* Modify these properties to show more of the horizontal content */
-    width: 100%; /* Increase width to show more horizontal content */
+    width: 100%;
     height: auto;
-    min-width: 0; /* Remove min-width constraint */
+    min-width: 0;
     min-height: 100%;
     object-fit: cover;
-    object-position: center; /* Center the video */
+    object-position: 50% 50%;
   }
 
   .banner-title {

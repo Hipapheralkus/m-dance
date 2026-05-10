@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './AboutUs.css';
-// Corrected import path
 import Gallery, { Lightbox } from '../components/Gallery';
+import useScrollLock from '../hooks/useScrollLock';
 
 // Helper function to generate image paths
 const generateImagePaths = (section, count) => {
@@ -27,17 +27,16 @@ const AboutUs = () => {
     const vzdelavaniImages = generateImagePaths('vzdelavani', 9);
     const dolaryImages = generateImagePaths('dolary', 3);
 
-    // --- Lightbox logic ---
+    useScrollLock(selectedImage !== null);
+
     const openLightbox = (images, index) => {
         setActiveGallery(images);
         setSelectedImage(index);
-        document.body.style.overflow = 'hidden';
     };
 
     const closeLightbox = () => {
         setSelectedImage(null);
         setActiveGallery([]);
-        document.body.style.overflow = 'auto';
     };
 
     const navigateImage = (direction) => {
@@ -62,8 +61,14 @@ const AboutUs = () => {
     }, [selectedImage, activeGallery]);
 
     return (
-        <div className="o-nas-container">
+        <div className="o-nas-page">
+          <title>O nás | M-Dance</title>
+          <meta name="description" content="Co děláme, čím se zabýváme a co nás baví v M-Dance. Soutěžíme, vystupujeme, tvoříme a vzděláváme se." />
+          <link rel="canonical" href="https://m-dance.cz/o-nas" />
+          <div className="page-header">
             <h1>O nás</h1>
+          </div>
+          <div className="o-nas-container">
 
             <section>
                 <h2>Jdeme za svými sny</h2>
@@ -150,6 +155,7 @@ const AboutUs = () => {
                 navigateImage={navigateImage}
                 images={activeGallery}
             />
+          </div>
         </div>
     );
 };

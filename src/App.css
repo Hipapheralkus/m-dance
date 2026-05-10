@@ -1,9 +1,3 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-
-/* Import Font Awesome */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
-
 /* Reset and base styles */
 * {
   margin: 0;
@@ -88,6 +82,10 @@ html {
 
 .btn:active {
   transform: translateY(-1px);
+}
+
+.route-fallback {
+  min-height: 50vh;
 }
 
 /* Media queries */

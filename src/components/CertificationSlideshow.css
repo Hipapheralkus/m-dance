@@ -35,6 +35,55 @@
   box-sizing: border-box;
 }
 
+.certification-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.cert-nav-button {
+  background: transparent;
+  border: 0;
+  color: #444;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.cert-nav-button:hover,
+.cert-nav-button:focus-visible {
+  color: #64bfe8;
+  outline: none;
+}
+
+.cert-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.cert-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border-radius: 50%;
+  border: 0;
+  background: #cfd6dc;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.cert-dot.active {
+  background: #64bfe8;
+}
+
+.cert-dot:focus-visible {
+  outline: 2px solid #64bfe8;
+  outline-offset: 2px;
+}
+
 @media screen and (max-width: 768px) {
   .certification-slideshow {
     max-width: 100%;

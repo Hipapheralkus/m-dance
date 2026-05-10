@@ -13,14 +13,12 @@ const getThumbnailPath = (image) => {
 
 const Gallery = ({ images, onImageClick, layout = 'grid' }) => {
     const scrollContainerRef = useRef(null);
-    const [isDragging, setIsDragging] = useState(false);
-    const [startX, setStartX] = useState(0);
-    const [scrollLeft, setScrollLeft] = useState(0);
+    const isDraggingRef = useRef(false);
+    const startXRef = useRef(0);
+    const scrollLeftRef = useRef(0);
+    const [hasDragged, setHasDragged] = useState(false);
 
-    // layout can be 'grid' or 'scrollable'
     const gridClass = layout === 'scrollable' ? 'gallery-grid scrollable' : 'gallery-grid';
-    
-    // Determine if arrows should be shown
     const showArrows = layout === 'scrollable' && images && images.length > 4;
 
     const scroll = (direction) => {
@@ -30,45 +28,50 @@ const Gallery = ({ images, onImageClick, layout = 'grid' }) => {
         }
     };
 
-    // --- Swipe/Drag Logic ---
     const onMouseDown = (e) => {
         if (layout !== 'scrollable') return;
-        setIsDragging(true);
-        setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
-        setScrollLeft(scrollContainerRef.current.scrollLeft);
+        isDraggingRef.current = true;
+        setHasDragged(false);
+        startXRef.current = e.pageX - scrollContainerRef.current.offsetLeft;
+        scrollLeftRef.current = scrollContainerRef.current.scrollLeft;
         scrollContainerRef.current.classList.add('active');
     };
 
     const onMouseLeave = () => {
         if (layout !== 'scrollable') return;
-        setIsDragging(false);
-        scrollContainerRef.current.classList.remove('active');
+        isDraggingRef.current = false;
+        scrollContainerRef.current?.classList.remove('active');
     };
 
     const onMouseUp = () => {
         if (layout !== 'scrollable') return;
-        setIsDragging(false);
-        scrollContainerRef.current.classList.remove('active');
+        isDraggingRef.current = false;
+        scrollContainerRef.current?.classList.remove('active');
     };
 
     const onMouseMove = (e) => {
-        if (!isDragging || layout !== 'scrollable') return;
+        if (!isDraggingRef.current || layout !== 'scrollable') return;
         e.preventDefault();
         const x = e.pageX - scrollContainerRef.current.offsetLeft;
-        const walk = (x - startX) * 2; // The multiplier makes the swipe faster
-        scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+        const walk = (x - startXRef.current) * 2;
+        if (Math.abs(walk) > 5) setHasDragged(true);
+        scrollContainerRef.current.scrollLeft = scrollLeftRef.current - walk;
     };
-
 
     return (
         <div className="gallery-wrapper">
-             {showArrows && (
-                <button className="scroll-arrow prev" onClick={() => scroll(-1)}>
+            {showArrows && (
+                <button
+                    type="button"
+                    className="scroll-arrow prev"
+                    onClick={() => scroll(-1)}
+                    aria-label="Posunout galerii doleva"
+                >
                     &#10094;
                 </button>
             )}
-            <div 
-                className={gridClass} 
+            <div
+                className={gridClass}
                 ref={scrollContainerRef}
                 onMouseDown={onMouseDown}
                 onMouseLeave={onMouseLeave}
@@ -78,10 +81,12 @@ const Gallery = ({ images, onImageClick, layout = 'grid' }) => {
                 {images.map((image, index) => {
                     const thumbnail = getThumbnailPath(image);
                     return (
-                        <div
+                        <button
+                            type="button"
                             className="gallery-item"
                             key={index}
-                            onClick={() => !isDragging && onImageClick(index)} // Prevents click during drag
+                            onClick={() => !hasDragged && onImageClick(index)}
+                            aria-label={`Otevřít fotografii ${index + 1}`}
                         >
                             <img
                                 src={thumbnail}
@@ -89,12 +94,17 @@ const Gallery = ({ images, onImageClick, layout = 'grid' }) => {
                                 draggable="false"
                                 loading="lazy"
                             />
-                        </div>
+                        </button>
                     );
                 })}
             </div>
             {showArrows && (
-                 <button className="scroll-arrow next" onClick={() => scroll(1)}>
+                <button
+                    type="button"
+                    className="scroll-arrow next"
+                    onClick={() => scroll(1)}
+                    aria-label="Posunout galerii doprava"
+                >
                     &#10095;
                 </button>
             )}
@@ -103,8 +113,25 @@ const Gallery = ({ images, onImageClick, layout = 'grid' }) => {
 };
 
 export const Lightbox = ({ selectedImage, closeLightbox, navigateImage, images }) => {
-    const [touchDeltaX, setTouchDeltaX] = useState(0);
     const [isSwiping, setIsSwiping] = useState(false);
+    const imgRefs = useRef({});
+    const closeBtnRef = useRef(null);
+    const lastFocusedRef = useRef(null);
+
+    // Imperatively apply transforms to lightbox images (CSP-safe — CSSOM mutation,
+    // not the inline `style` attribute, so works under `style-src-attr 'none'`).
+    const applyTransform = (deltaX) => {
+        const sel = selectedImage;
+        if (sel === null) return;
+        const apply = (idx, baseExpr) => {
+            const el = imgRefs.current[idx];
+            if (!el) return;
+            el.style.transform = baseExpr.replace('${dx}', `${deltaX}px`);
+        };
+        apply(sel - 1, 'translateX(calc(-100% + ${dx}))');
+        apply(sel,     'translateX(${dx})');
+        apply(sel + 1, 'translateX(calc(100% + ${dx}))');
+    };
 
     const handlers = useSwipeable({
         onSwiped: (eventData) => {
@@ -113,11 +140,11 @@ export const Lightbox = ({ selectedImage, closeLightbox, navigateImage, images }
             } else if (eventData.dir === 'Right' && selectedImage > 0) {
                 navigateImage(-1);
             }
-            setTouchDeltaX(0);
+            applyTransform(0);
             setIsSwiping(false);
         },
         onSwiping: (eventData) => {
-            setTouchDeltaX(eventData.deltaX);
+            applyTransform(eventData.deltaX);
             setIsSwiping(true);
         },
         trackMouse: true,
@@ -128,75 +155,105 @@ export const Lightbox = ({ selectedImage, closeLightbox, navigateImage, images }
     useEffect(() => {
         if (selectedImage !== null) {
             if (selectedImage < images.length - 1) {
-                const nextImage = new Image();
-                nextImage.src = images[selectedImage + 1];
+                const nextImg = new Image();
+                nextImg.src = images[selectedImage + 1];
             }
             if (selectedImage > 0) {
-                const prevImage = new Image();
-                prevImage.src = images[selectedImage - 1];
+                const prevImg = new Image();
+                prevImg.src = images[selectedImage - 1];
             }
         }
     }, [selectedImage, images]);
 
     useEffect(() => {
-        setTouchDeltaX(0);
+        // Reset transform / transition each time a new image is selected.
+        Object.values(imgRefs.current).forEach((el) => {
+            if (!el) return;
+            el.style.transition = 'transform 0.3s ease-out';
+        });
+        applyTransform(0);
+    }, [selectedImage]);
+
+    useEffect(() => {
+        // Toggle transition while swiping vs. snapping back.
+        Object.values(imgRefs.current).forEach((el) => {
+            if (!el) return;
+            el.style.transition = isSwiping ? 'none' : 'transform 0.3s ease-out';
+        });
+    }, [isSwiping]);
+
+    useEffect(() => {
+        if (selectedImage === null) return undefined;
+        lastFocusedRef.current = document.activeElement;
+        const t = setTimeout(() => closeBtnRef.current?.focus(), 0);
+        const onKey = (e) => {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+                closeBtnRef.current?.focus();
+            }
+        };
+        window.addEventListener('keydown', onKey);
+        return () => {
+            clearTimeout(t);
+            window.removeEventListener('keydown', onKey);
+            if (lastFocusedRef.current && lastFocusedRef.current.focus) {
+                lastFocusedRef.current.focus();
+            }
+        };
     }, [selectedImage]);
 
     if (selectedImage === null) return null;
 
     const renderImage = (index) => {
-        if (index < 0 || index >= images.length) {
-            return null;
-        }
-
-        let transform = 'translateX(0)';
-        let zIndex = 1;
-        if (index === selectedImage) {
-            transform = `translateX(${touchDeltaX}px)`;
-            zIndex = 3;
-        } else if (index === selectedImage - 1) {
-            transform = `translateX(calc(-100% + ${touchDeltaX}px))`;
-            zIndex = 2;
-        } else if (index === selectedImage + 1) {
-            transform = `translateX(calc(100% + ${touchDeltaX}px))`;
-            zIndex = 2;
-        } else {
-            return null;
-        }
+        if (index < 0 || index >= images.length) return null;
+        let zClass;
+        if (index === selectedImage) zClass = 'lb-img lb-img-current';
+        else if (index === selectedImage - 1) zClass = 'lb-img lb-img-prev';
+        else if (index === selectedImage + 1) zClass = 'lb-img lb-img-next';
+        else return null;
 
         return (
             <img
                 key={index}
+                ref={(el) => { imgRefs.current[index] = el; }}
                 src={images[index]}
                 alt={`M-Dance fotografie ${index + 1}`}
                 draggable="false"
+                loading="lazy"
                 onDragStart={(e) => e.preventDefault()}
-                style={{
-                    transform: transform,
-                    transition: isSwiping ? 'none' : 'transform 0.3s ease-out',
-                    zIndex: zIndex,
-                    userSelect: 'none',
-                }}
+                className={zClass}
             />
         );
     };
 
     return (
-        <div className="lightbox" onClick={closeLightbox}>
+        <div
+            className="lightbox"
+            onClick={closeLightbox}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Galerie fotografií"
+        >
             <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-                <button className="close-button" onClick={closeLightbox}>
+                <button
+                    ref={closeBtnRef}
+                    className="close-button"
+                    onClick={closeLightbox}
+                    aria-label="Zavřít galerii"
+                >
                     &times;
                 </button>
                 <button
+                    type="button"
                     className="nav-button prev"
                     onClick={() => navigateImage(-1)}
                     disabled={selectedImage === 0}
+                    aria-label="Předchozí obrázek"
                 >
                     &#10094;
                 </button>
-                <div {...handlers} style={{width: '100%', height: '100%', display: 'flex', alignItems: 'center'}} onDragStart={(e) => e.preventDefault()}>
-                    <div
-                        className={`lightbox-image-container`}>
+                <div {...handlers} className="lightbox-swipe-area" onDragStart={(e) => e.preventDefault()}>
+                    <div className="lightbox-image-container">
                         {renderImage(selectedImage - 1)}
                         {renderImage(selectedImage)}
                         {renderImage(selectedImage + 1)}
@@ -207,9 +264,11 @@ export const Lightbox = ({ selectedImage, closeLightbox, navigateImage, images }
                     </div>
                 </div>
                 <button
+                    type="button"
                     className="nav-button next"
                     onClick={() => navigateImage(1)}
                     disabled={selectedImage === images.length - 1}
+                    aria-label="Další obrázek"
                 >
                     &#10095;
                 </button>

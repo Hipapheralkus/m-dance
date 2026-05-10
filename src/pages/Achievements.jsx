@@ -1,93 +1,76 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Achievements.css';
+import useScrollLock from '../hooks/useScrollLock';
+
+const achievementImages = Array.from({ length: 11 }, (_, i) =>
+  `/images/achievements/achievement${i + 1}.webp`
+);
 
 const Achievements = () => {
-  // State for lightbox
-  const [lightbox, setLightbox] = useState({
-    isOpen: false,
-    currentIndex: 0
-  });
+  const [lightbox, setLightbox] = useState({ isOpen: false, currentIndex: 0 });
+  const closeBtnRef = useRef(null);
+  const lastFocusedRef = useRef(null);
 
-  // Achievement images array
-  const achievementImages = Array.from({ length: 11 }, (_, i) => 
-    `/images/achievements/achievement${i + 1}.webp`
-  );
+  useScrollLock(lightbox.isOpen);
 
-  // Open lightbox
-  const openLightbox = (index) => {
-    setLightbox({
-      isOpen: true,
-      currentIndex: index
-    });
-    document.body.style.overflow = 'hidden';
+  const openLightbox = (index, triggerEl) => {
+    lastFocusedRef.current = triggerEl || document.activeElement;
+    setLightbox({ isOpen: true, currentIndex: index });
   };
 
-  // Close lightbox
   const closeLightbox = () => {
-    setLightbox({
-      ...lightbox,
-      isOpen: false
-    });
-    document.body.style.overflow = 'auto';
+    setLightbox((prev) => ({ ...prev, isOpen: false }));
+    if (lastFocusedRef.current && lastFocusedRef.current.focus) {
+      lastFocusedRef.current.focus();
+    }
   };
 
-  // Navigate to previous image
   const prevImage = () => {
-    if (lightbox.currentIndex > 0) {
-      setLightbox({
-        ...lightbox,
-        currentIndex: lightbox.currentIndex - 1
-      });
-    }
+    setLightbox((prev) => prev.currentIndex > 0 ? { ...prev, currentIndex: prev.currentIndex - 1 } : prev);
   };
 
-  // Navigate to next image
   const nextImage = () => {
-    if (lightbox.currentIndex < achievementImages.length - 1) {
-      setLightbox({
-        ...lightbox,
-        currentIndex: lightbox.currentIndex + 1
-      });
-    }
+    setLightbox((prev) => prev.currentIndex < achievementImages.length - 1 ? { ...prev, currentIndex: prev.currentIndex + 1 } : prev);
   };
 
-  // Handle keyboard navigation
-  React.useEffect(() => {
+  useEffect(() => {
+    if (!lightbox.isOpen) return undefined;
     const handleKeyDown = (e) => {
-      if (!lightbox.isOpen) return;
-      
-      if (e.key === 'Escape') {
-        closeLightbox();
-      } else if (e.key === 'ArrowRight') {
-        nextImage();
-      } else if (e.key === 'ArrowLeft') {
-        prevImage();
+      if (e.key === 'Escape') closeLightbox();
+      else if (e.key === 'ArrowRight') nextImage();
+      else if (e.key === 'ArrowLeft') prevImage();
+      else if (e.key === 'Tab') {
+        e.preventDefault();
+        if (closeBtnRef.current) closeBtnRef.current.focus();
       }
     };
-
     window.addEventListener('keydown', handleKeyDown);
+    if (closeBtnRef.current) closeBtnRef.current.focus();
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [lightbox]);
+  }, [lightbox.isOpen]);
 
   return (
     <div className="achievements-page">
+      <title>Soutěžní úspěchy | M-Dance</title>
+      <meta name="description" content="Přehled soutěžních úspěchů tanečníků M-Dance — medaile z Mistrovství ČR, WDA World Championship a dalších soutěží." />
+      <link rel="canonical" href="https://m-dance.cz/uspechy" />
       <div className="page-header">
         <h1>Soutěžní úspěchy</h1>
       </div>
-      
+
       <div className="achievements-container">
         <div className="achievements-content">
           <h2>Na co jsme pyšní</h2>
-          
+
           <div className="achievement-text">
             <p className="achievement-intro">
               <strong>Patříme mezi přední taneční kluby v Česku.</strong>
             </p>
-            
+
             <p>
               Naši tanečníci soutěží jak v kategorii skupin, tak v kategorii duetů a sól.
             </p>
-            
+
             <p className="achievement-subheading">
               Níže uvádíme výběr úspěchů našich tanečníků:
             </p>
@@ -104,14 +87,13 @@ const Achievements = () => {
                 <li><strong>MČR Czech Dance Tour 2025:</strong> Získali jsme 1 stříbrnou, 1 bronzovou a 1 finále - 2 choreografie postoupili na mistrovství světa do Budapešti.</li>
                 <li><strong>Open Dance Mission Mladá Boleslav - 9. ročník</strong> Získali jsme 3 zlaté, 3 stříbrné, 2 bronzové a 1 finále.</li>
               </ul>
-            </div>   
+            </div>
 
             <div className="achievement-year">
               <h3>Rok 2024</h3>
               <ul>
                 <li><strong>Mistrovství ČR Czech Dance League 2024:</strong> 27 sól a duetů, získali jsme 4 zlaté, 4 stříbrné a 4 bronzové medaile.</li>
-                  {/* TODO more WDA;  */}
-                <li><strong>WDA World Championship 2024:</strong> Naši tanečníci vybojovali 1 zlatou medaili.</li> 
+                <li><strong>WDA World Championship 2024:</strong> Naši tanečníci vybojovali 1 zlatou medaili.</li>
                 <li><strong>Open Dance Mission Mladá Boleslav 2024:</strong> Přivezli jsme 2 zlaté medaile.</li>
                 <li><strong>MČR Czech Dance Tour 2024:</strong> Získali jsme 1 stříbrnou medaili a měli jsme 3 další tanečníky ve finále.</li>
                 <li><strong>Mistrovství Čech Czech Dance Tour 2024:</strong> Získali jsme 1 zlatou, 1 stříbrnou a 1 bronzovou medaili.</li>
@@ -120,7 +102,7 @@ const Achievements = () => {
                 <li>Jedna naše tanečnice byla přijata na prestižní <strong>University of North Carolina School of the Arts (UNCSA)</strong>.</li>
               </ul>
             </div>
-            
+
             <div className="achievement-year">
               <h3>Rok 2023</h3>
               <ul>
@@ -134,7 +116,7 @@ const Achievements = () => {
                 <li>Jedna naše tanečnice úspěšně prošla náročným výběrem na <strong>UNCSA Summer Contemporary Dance Intensive</strong> v USA.</li>
               </ul>
             </div>
-            
+
             <div className="achievement-year">
               <h3>Rok 2022</h3>
               <ul>
@@ -147,7 +129,7 @@ const Achievements = () => {
                 <li><strong>Regionální kolo Czech Dance Tour 2022:</strong> Vybojovali jsme 3 zlaté a 1 stříbrnou medaili.</li>
               </ul>
             </div>
-            
+
             <div className="achievement-year">
               <h3>Rok 2021</h3>
               <ul>
@@ -155,7 +137,7 @@ const Achievements = () => {
                 <li><strong>Online soutěže v roce 2021:</strong> Během online soutěží <em>Czech Dance Masters Online</em>, <em>Crown the Best</em> a <em>O cenu starostky města Česká Lípa</em> jsme získali celkem 6 medailových umístění.</li>
               </ul>
             </div>
-            
+
             <div className="achievement-year">
               <h3>Rok 2020</h3>
               <ul>
@@ -163,51 +145,66 @@ const Achievements = () => {
               </ul>
             </div>
           </div>
-          
+
           <div className="achievements-gallery">
             {achievementImages.map((image, index) => (
-              <div 
-                className="achievement-image" 
+              <button
+                type="button"
+                className="achievement-image"
                 key={index}
-                onClick={() => openLightbox(index)}
+                onClick={(e) => openLightbox(index, e.currentTarget)}
+                aria-label={`Otevřít obrázek úspěchu ${index + 1}`}
               >
-                <img src={image} alt={`M-Dance soutěžní úspěch ${index + 1}`} />
-              </div>
+                <img src={image} alt={`M-Dance soutěžní úspěch ${index + 1}`} loading="lazy" />
+              </button>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Lightbox for achievement images */}
       {lightbox.isOpen && (
-        <div className="lightbox" onClick={closeLightbox}>
+        <div
+          className="lightbox"
+          onClick={closeLightbox}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Galerie úspěchů"
+        >
           <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-button" onClick={closeLightbox}>
+            <button
+              ref={closeBtnRef}
+              className="close-button"
+              onClick={closeLightbox}
+              aria-label="Zavřít galerii"
+            >
               &times;
             </button>
-            
+
             <button
               className="nav-button prev"
               onClick={prevImage}
               disabled={lightbox.currentIndex === 0}
+              aria-label="Předchozí obrázek"
             >
               &#10094;
             </button>
-            
+
             <div className="lightbox-image-container">
-              <img 
-                src={achievementImages[lightbox.currentIndex]} 
-                alt={`M-Dance soutěžní úspěch ${lightbox.currentIndex + 1}`} 
+              <img
+                src={achievementImages[lightbox.currentIndex]}
+                alt={`M-Dance soutěžní úspěch ${lightbox.currentIndex + 1}`}
+                loading="lazy"
               />
               <div className="image-counter">
                 {lightbox.currentIndex + 1} / {achievementImages.length}
               </div>
             </div>
-            
+
             <button
               className="nav-button next"
               onClick={nextImage}
               disabled={lightbox.currentIndex === achievementImages.length - 1}
+              aria-label="Další obrázek"
             >
               &#10095;
             </button>

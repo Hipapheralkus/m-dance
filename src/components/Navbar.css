@@ -66,6 +66,25 @@
 
 .menu-icon {
   display: none;
+  background: transparent;
+  border: 0;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.menu-icon:focus-visible {
+  outline: 3px solid #64bfe8;
+  outline-offset: 2px;
+}
+
+.nav-link.active {
+  color: #64bfe8;
+  border-bottom: 3px solid #64bfe8;
+}
+
+.nav-link:focus-visible {
+  outline: 3px solid #64bfe8;
+  outline-offset: -3px;
 }
 
 .menu-icon-bar {

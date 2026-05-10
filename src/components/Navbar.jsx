@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import eosLogo from '../assets/eos.png';
 import './Navbar.css';
@@ -8,62 +8,69 @@ import { ENABLED_FEATURES } from '../config';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleMenu = () => setIsOpen((v) => !v);
+  const closeMenu = () => setIsOpen(false);
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" aria-label="Hlavní navigace">
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          <img src={logo} alt="M-Dance Logo" />
+        <Link to="/" className="navbar-logo" aria-label="M-Dance — domovská stránka" onClick={closeMenu}>
+          <img src={logo} alt="M-Dance" width="180" height="60" />
         </Link>
-        
-        <div className="menu-icon" onClick={toggleMenu}>
+
+        <button
+          type="button"
+          className="menu-icon"
+          onClick={toggleMenu}
+          aria-label={isOpen ? 'Zavřít menu' : 'Otevřít menu'}
+          aria-expanded={isOpen}
+          aria-controls="primary-navigation"
+        >
           <span className={isOpen ? 'menu-icon-bar open' : 'menu-icon-bar'}></span>
           <span className={isOpen ? 'menu-icon-bar open' : 'menu-icon-bar'}></span>
           <span className={isOpen ? 'menu-icon-bar open' : 'menu-icon-bar'}></span>
-        </div>
-        
-        <ul className={isOpen ? 'nav-menu active' : 'nav-menu'}>
+        </button>
+
+        <ul id="primary-navigation" className={isOpen ? 'nav-menu active' : 'nav-menu'}>
           <li className="nav-item">
-            <Link to="/" className="nav-link" onClick={() => setIsOpen(false)}>
+            <NavLink to="/" end className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={closeMenu}>
               Domů
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link to="/o-nas" className="nav-link" onClick={() => setIsOpen(false)}>
+            <NavLink to="/o-nas" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={closeMenu}>
               O nás
-            </Link>
+            </NavLink>
           </li>
           {ENABLED_FEATURES.ACHIEVEMENTS && (
             <li className="nav-item">
-              <Link to="/uspechy" className="nav-link" onClick={() => setIsOpen(false)}>
+              <NavLink to="/uspechy" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={closeMenu}>
                 Soutěžní úspěchy
-              </Link>
+              </NavLink>
             </li>
           )}
           {ENABLED_FEATURES.TRAINERS && (
             <li className="nav-item">
-              <Link to="/treneri" className="nav-link" onClick={() => setIsOpen(false)}>
+              <NavLink to="/treneri" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={closeMenu}>
                 Naši trenéři
-              </Link>
+              </NavLink>
             </li>
           )}
           <li className="nav-item">
-            <Link to="/kontakty" className="nav-link" onClick={() => setIsOpen(false)}>
+            <NavLink to="/kontakty" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={closeMenu}>
               Kontakty
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a 
-              href="https://eos.m-dance.cz/" 
-              className="nav-link eos-link" 
-              target="_blank" 
+            <a
+              href="https://eos.m-dance.cz/"
+              className="nav-link eos-link"
+              target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setIsOpen(false)}
+              aria-label="EOS — externí systém"
+              onClick={closeMenu}
             >
-              <img src={eosLogo} alt="EOS" className="eos-image" />
+              <img src={eosLogo} alt="EOS" className="eos-image" width="40" height="24" />
             </a>
           </li>
         </ul>

@@ -1,0 +1,4 @@
+Contact: mailto:andrej@m-dance.cz
+Expires: 2027-05-10T00:00:00.000Z
+Preferred-Languages: cs, en
+Canonical: https://m-dance.cz/.well-known/security.txt

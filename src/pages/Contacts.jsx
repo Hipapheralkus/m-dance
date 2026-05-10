@@ -6,7 +6,7 @@ const Contacts = () => {
     {
       id: 1,
       name: 'Gymnázium Jana Keplera',
-      address: 'Hládkov 224/1, Praha 6-Hradčany',
+      address: 'Hládkov 224/1, Praha 6 – Hradčany',
       mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d524.9888389398874!2d14.38738500201975!3d50.08864371089875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b951a70be468d%3A0xd43cf0dfef320f73!2sHl%C3%A1dkov%20224%2F1%2C%20169%2000%20Praha%206-Hrad%C4%8Dany!5e0!3m2!1sen!2scz!4v1742679092633!5m2!1sen!2scz'
     },
     {
@@ -19,6 +19,9 @@ const Contacts = () => {
 
   return (
     <div className="contacts-page">
+      <title>Kontakty | M-Dance</title>
+      <meta name="description" content="Kontakty na M-Dance — email, sociální sítě a tréninková místa v Praze: Hládkov 224/1 (Praha 6) a DanceZone (Praha 11)." />
+      <link rel="canonical" href="https://m-dance.cz/kontakty" />
       <div className="page-header">
         <h1>Kontakty</h1>
       </div>
@@ -40,13 +43,13 @@ const Contacts = () => {
             <h2>Sociální sítě</h2>
             <div className="social-links">
               <a href="https://www.instagram.com/m_dance_prague/" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-instagram"></i> Instagram
+                <i className="fab fa-instagram" aria-hidden="true"></i> Instagram
               </a>
               <a href="https://www.facebook.com/mdancejj" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-facebook"></i> Facebook
+                <i className="fab fa-facebook" aria-hidden="true"></i> Facebook
               </a>
               <a href="https://www.youtube.com/@marcelasmrhova8962" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-youtube"></i> YouTube
+                <i className="fab fa-youtube" aria-hidden="true"></i> YouTube
               </a>
             </div>
           </div>
@@ -67,10 +70,10 @@ const Contacts = () => {
                     src={location.mapEmbedUrl}
                     width="100%"
                     height="300"
-                    style={{ border: 0 }}
                     allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
+                    sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
                     title={`Mapa - ${location.name}`}
                   ></iframe>
                 </div>

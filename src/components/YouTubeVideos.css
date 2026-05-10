@@ -43,6 +43,18 @@
   cursor: pointer;
   transition: transform 0.3s ease;
   aspect-ratio: 16 / 9;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  display: block;
+  width: 100%;
+}
+
+.video-thumbnail:focus-visible {
+  outline: 3px solid #64bfe8;
+  outline-offset: 2px;
 }
 
 .video-thumbnail:hover {
