@@ -25,7 +25,7 @@
         },
         {
           "key": "Permissions-Policy",
-          "value": "accelerometer=(), ambient-light-sensor=(), autoplay=(self), camera=(), display-capture=(), encrypted-media=(self), fullscreen=(self), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(self), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(self), usb=(), web-share=(), xr-spatial-tracking=()"
+          "value": "accelerometer=(\"https://www.youtube-nocookie.com\"), ambient-light-sensor=(), autoplay=(self \"https://www.youtube-nocookie.com\"), camera=(), display-capture=(), encrypted-media=(self \"https://www.youtube-nocookie.com\"), fullscreen=(self \"https://www.youtube-nocookie.com\" \"https://www.google.com\"), geolocation=(), gyroscope=(\"https://www.youtube-nocookie.com\"), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(self \"https://www.youtube-nocookie.com\"), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(self), usb=(), web-share=(), xr-spatial-tracking=()"
         },
         {
           "key": "Cross-Origin-Opener-Policy",
