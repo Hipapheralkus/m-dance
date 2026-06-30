@@ -1,5 +1,6 @@
 import React from 'react';
 import './Contacts.css';
+import { InstagramIcon, FacebookIcon, YouTubeIcon } from '../components/icons';
 
 const Contacts = () => {
   const locations = [
@@ -43,13 +44,13 @@ const Contacts = () => {
             <h2>Sociální sítě</h2>
             <div className="social-links">
               <a href="https://www.instagram.com/m_dance_prague/" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-instagram" aria-hidden="true"></i> Instagram
+                <InstagramIcon /> Instagram
               </a>
               <a href="https://www.facebook.com/mdancejj" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-facebook" aria-hidden="true"></i> Facebook
+                <FacebookIcon /> Facebook
               </a>
               <a href="https://www.youtube.com/@marcelasmrhova8962" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-youtube" aria-hidden="true"></i> YouTube
+                <YouTubeIcon /> YouTube
               </a>
             </div>
           </div>

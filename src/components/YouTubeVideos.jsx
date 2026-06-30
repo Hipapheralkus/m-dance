@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './YouTubeVideos.css';
 import useScrollLock from '../hooks/useScrollLock';
+import { PlayIcon } from './icons';
 
 const videos = [
   { id: 'OfcgeA-DZoI', title: 'MČR Czech Dance Tour 2022 - Sound of Silence' },
@@ -73,7 +74,7 @@ const YouTubeVideos = () => {
                 }}
               />
               <div className="play-button" aria-hidden="true">
-                <i className="fas fa-play"></i>
+                <PlayIcon />
               </div>
               <div className="video-title">{video.title}</div>
             </button>

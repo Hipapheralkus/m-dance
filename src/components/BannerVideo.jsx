@@ -1,6 +1,7 @@
 import React from 'react';
 import './BannerVideo.css';
 import bannerVideo from '../assets/banner-video.mp4';
+import bannerPoster from '../assets/banner-poster.webp';
 
 const BannerVideo = () => {
   return (
@@ -12,6 +13,7 @@ const BannerVideo = () => {
         muted
         playsInline
         preload="metadata"
+        poster={bannerPoster}
         aria-hidden="true"
       >
         <source src={bannerVideo} type="video/mp4" />
