@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 const VENDOR_CHUNKS = {
-  'vendor-react': ['react', 'react-dom', 'react-router', 'react-router-dom'],
+  'vendor-react': ['react', 'react-dom', 'react-router'],
   'vendor-swipeable': ['react-swipeable'],
   'vendor-vercel': ['@vercel/analytics', '@vercel/speed-insights'],
 }

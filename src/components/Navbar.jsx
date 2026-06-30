@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router';
 import logo from '../assets/logo.png';
 import eosLogo from '../assets/eos.png';
 import './Navbar.css';
