@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import react, { reactCompilerPreset } from '@vitejs/plugin-react'
+import babel from '@rolldown/plugin-babel'
 
 const VENDOR_CHUNKS = {
   'vendor-react': ['react', 'react-dom', 'react-router'],
@@ -18,14 +19,11 @@ const matchVendor = (id) => {
 }
 
 export default defineConfig({
+  // @vitejs/plugin-react v6 dropped its `babel` option; React Compiler now
+  // runs through @rolldown/plugin-babel.
   plugins: [
-    react({
-      babel: {
-        plugins: [
-          ['babel-plugin-react-compiler', { target: '19' }]
-        ]
-      }
-    })
+    react(),
+    babel({ presets: [reactCompilerPreset({ target: '19' })] }),
   ],
   build: {
     target: 'es2022',
